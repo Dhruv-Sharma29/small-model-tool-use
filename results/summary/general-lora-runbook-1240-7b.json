@@ -1,0 +1,497 @@
+{
+ "condition": "lora-runbook-1240-7b",
+ "set": "01-llm-inference-lab/benchmarks/prompts/heldout.jsonl",
+ "prompts": 60,
+ "passed": 59,
+ "by_category": {
+  "extraction": "20/20",
+  "reasoning": "19/20",
+  "tool_call": "20/20"
+ },
+ "tool_call_replies": 0,
+ "failure_reasons": {
+  "got 549421": 1
+ },
+ "rows": [
+  {
+   "id": "heldout-extraction-short-000",
+   "category": "extraction",
+   "passed": true,
+   "reason": "ok",
+   "tool_call_reply": false,
+   "finish_reason": "stop"
+  },
+  {
+   "id": "heldout-extraction-short-001",
+   "category": "extraction",
+   "passed": true,
+   "reason": "ok",
+   "tool_call_reply": false,
+   "finish_reason": "stop"
+  },
+  {
+   "id": "heldout-extraction-short-002",
+   "category": "extraction",
+   "passed": true,
+   "reason": "ok",
+   "tool_call_reply": false,
+   "finish_reason": "stop"
+  },
+  {
+   "id": "heldout-extraction-short-003",
+   "category": "extraction",
+   "passed": true,
+   "reason": "ok",
+   "tool_call_reply": false,
+   "finish_reason": "stop"
+  },
+  {
+   "id": "heldout-extraction-short-004",
+   "category": "extraction",
+   "passed": true,
+   "reason": "ok",
+   "tool_call_reply": false,
+   "finish_reason": "stop"
+  },
+  {
+   "id": "heldout-extraction-short-005",
+   "category": "extraction",
+   "passed": true,
+   "reason": "ok",
+   "tool_call_reply": false,
+   "finish_reason": "stop"
+  },
+  {
+   "id": "heldout-extraction-short-006",
+   "category": "extraction",
+   "passed": true,
+   "reason": "ok",
+   "tool_call_reply": false,
+   "finish_reason": "stop"
+  },
+  {
+   "id": "heldout-extraction-short-007",
+   "category": "extraction",
+   "passed": true,
+   "reason": "ok",
+   "tool_call_reply": false,
+   "finish_reason": "stop"
+  },
+  {
+   "id": "heldout-extraction-short-008",
+   "category": "extraction",
+   "passed": true,
+   "reason": "ok",
+   "tool_call_reply": false,
+   "finish_reason": "stop"
+  },
+  {
+   "id": "heldout-extraction-short-009",
+   "category": "extraction",
+   "passed": true,
+   "reason": "ok",
+   "tool_call_reply": false,
+   "finish_reason": "stop"
+  },
+  {
+   "id": "heldout-extraction-short-010",
+   "category": "extraction",
+   "passed": true,
+   "reason": "ok",
+   "tool_call_reply": false,
+   "finish_reason": "stop"
+  },
+  {
+   "id": "heldout-extraction-short-011",
+   "category": "extraction",
+   "passed": true,
+   "reason": "ok",
+   "tool_call_reply": false,
+   "finish_reason": "stop"
+  },
+  {
+   "id": "heldout-extraction-long-000",
+   "category": "extraction",
+   "passed": true,
+   "reason": "ok",
+   "tool_call_reply": false,
+   "finish_reason": "stop"
+  },
+  {
+   "id": "heldout-extraction-long-001",
+   "category": "extraction",
+   "passed": true,
+   "reason": "ok",
+   "tool_call_reply": false,
+   "finish_reason": "stop"
+  },
+  {
+   "id": "heldout-extraction-long-002",
+   "category": "extraction",
+   "passed": true,
+   "reason": "ok",
+   "tool_call_reply": false,
+   "finish_reason": "stop"
+  },
+  {
+   "id": "heldout-extraction-long-003",
+   "category": "extraction",
+   "passed": true,
+   "reason": "ok",
+   "tool_call_reply": false,
+   "finish_reason": "stop"
+  },
+  {
+   "id": "heldout-extraction-long-004",
+   "category": "extraction",
+   "passed": true,
+   "reason": "ok",
+   "tool_call_reply": false,
+   "finish_reason": "stop"
+  },
+  {
+   "id": "heldout-extraction-long-005",
+   "category": "extraction",
+   "passed": true,
+   "reason": "ok",
+   "tool_call_reply": false,
+   "finish_reason": "stop"
+  },
+  {
+   "id": "heldout-extraction-long-006",
+   "category": "extraction",
+   "passed": true,
+   "reason": "ok",
+   "tool_call_reply": false,
+   "finish_reason": "stop"
+  },
+  {
+   "id": "heldout-extraction-long-007",
+   "category": "extraction",
+   "passed": true,
+   "reason": "ok",
+   "tool_call_reply": false,
+   "finish_reason": "stop"
+  },
+  {
+   "id": "heldout-tool_call-short-000",
+   "category": "tool_call",
+   "passed": true,
+   "reason": "ok",
+   "tool_call_reply": false,
+   "finish_reason": "stop"
+  },
+  {
+   "id": "heldout-tool_call-short-001",
+   "category": "tool_call",
+   "passed": true,
+   "reason": "ok",
+   "tool_call_reply": false,
+   "finish_reason": "stop"
+  },
+  {
+   "id": "heldout-tool_call-short-002",
+   "category": "tool_call",
+   "passed": true,
+   "reason": "ok",
+   "tool_call_reply": false,
+   "finish_reason": "stop"
+  },
+  {
+   "id": "heldout-tool_call-short-003",
+   "category": "tool_call",
+   "passed": true,
+   "reason": "ok",
+   "tool_call_reply": false,
+   "finish_reason": "stop"
+  },
+  {
+   "id": "heldout-tool_call-short-004",
+   "category": "tool_call",
+   "passed": true,
+   "reason": "ok",
+   "tool_call_reply": false,
+   "finish_reason": "stop"
+  },
+  {
+   "id": "heldout-tool_call-short-005",
+   "category": "tool_call",
+   "passed": true,
+   "reason": "ok",
+   "tool_call_reply": false,
+   "finish_reason": "stop"
+  },
+  {
+   "id": "heldout-tool_call-short-006",
+   "category": "tool_call",
+   "passed": true,
+   "reason": "ok",
+   "tool_call_reply": false,
+   "finish_reason": "stop"
+  },
+  {
+   "id": "heldout-tool_call-short-007",
+   "category": "tool_call",
+   "passed": true,
+   "reason": "ok",
+   "tool_call_reply": false,
+   "finish_reason": "stop"
+  },
+  {
+   "id": "heldout-tool_call-short-008",
+   "category": "tool_call",
+   "passed": true,
+   "reason": "ok",
+   "tool_call_reply": false,
+   "finish_reason": "stop"
+  },
+  {
+   "id": "heldout-tool_call-short-009",
+   "category": "tool_call",
+   "passed": true,
+   "reason": "ok",
+   "tool_call_reply": false,
+   "finish_reason": "stop"
+  },
+  {
+   "id": "heldout-tool_call-short-010",
+   "category": "tool_call",
+   "passed": true,
+   "reason": "ok",
+   "tool_call_reply": false,
+   "finish_reason": "stop"
+  },
+  {
+   "id": "heldout-tool_call-short-011",
+   "category": "tool_call",
+   "passed": true,
+   "reason": "ok",
+   "tool_call_reply": false,
+   "finish_reason": "stop"
+  },
+  {
+   "id": "heldout-tool_call-long-000",
+   "category": "tool_call",
+   "passed": true,
+   "reason": "ok",
+   "tool_call_reply": false,
+   "finish_reason": "stop"
+  },
+  {
+   "id": "heldout-tool_call-long-001",
+   "category": "tool_call",
+   "passed": true,
+   "reason": "ok",
+   "tool_call_reply": false,
+   "finish_reason": "stop"
+  },
+  {
+   "id": "heldout-tool_call-long-002",
+   "category": "tool_call",
+   "passed": true,
+   "reason": "ok",
+   "tool_call_reply": false,
+   "finish_reason": "stop"
+  },
+  {
+   "id": "heldout-tool_call-long-003",
+   "category": "tool_call",
+   "passed": true,
+   "reason": "ok",
+   "tool_call_reply": false,
+   "finish_reason": "stop"
+  },
+  {
+   "id": "heldout-tool_call-long-004",
+   "category": "tool_call",
+   "passed": true,
+   "reason": "ok",
+   "tool_call_reply": false,
+   "finish_reason": "stop"
+  },
+  {
+   "id": "heldout-tool_call-long-005",
+   "category": "tool_call",
+   "passed": true,
+   "reason": "ok",
+   "tool_call_reply": false,
+   "finish_reason": "stop"
+  },
+  {
+   "id": "heldout-tool_call-long-006",
+   "category": "tool_call",
+   "passed": true,
+   "reason": "ok",
+   "tool_call_reply": false,
+   "finish_reason": "stop"
+  },
+  {
+   "id": "heldout-tool_call-long-007",
+   "category": "tool_call",
+   "passed": true,
+   "reason": "ok",
+   "tool_call_reply": false,
+   "finish_reason": "stop"
+  },
+  {
+   "id": "heldout-reasoning-short-000",
+   "category": "reasoning",
+   "passed": true,
+   "reason": "ok",
+   "tool_call_reply": false,
+   "finish_reason": "stop"
+  },
+  {
+   "id": "heldout-reasoning-short-001",
+   "category": "reasoning",
+   "passed": true,
+   "reason": "ok",
+   "tool_call_reply": false,
+   "finish_reason": "stop"
+  },
+  {
+   "id": "heldout-reasoning-short-002",
+   "category": "reasoning",
+   "passed": true,
+   "reason": "ok",
+   "tool_call_reply": false,
+   "finish_reason": "stop"
+  },
+  {
+   "id": "heldout-reasoning-short-003",
+   "category": "reasoning",
+   "passed": true,
+   "reason": "ok",
+   "tool_call_reply": false,
+   "finish_reason": "stop"
+  },
+  {
+   "id": "heldout-reasoning-short-004",
+   "category": "reasoning",
+   "passed": true,
+   "reason": "ok",
+   "tool_call_reply": false,
+   "finish_reason": "stop"
+  },
+  {
+   "id": "heldout-reasoning-short-005",
+   "category": "reasoning",
+   "passed": true,
+   "reason": "ok",
+   "tool_call_reply": false,
+   "finish_reason": "stop"
+  },
+  {
+   "id": "heldout-reasoning-short-006",
+   "category": "reasoning",
+   "passed": true,
+   "reason": "ok",
+   "tool_call_reply": false,
+   "finish_reason": "stop"
+  },
+  {
+   "id": "heldout-reasoning-short-007",
+   "category": "reasoning",
+   "passed": false,
+   "reason": "got 549421",
+   "tool_call_reply": false,
+   "finish_reason": "stop"
+  },
+  {
+   "id": "heldout-reasoning-short-008",
+   "category": "reasoning",
+   "passed": true,
+   "reason": "ok",
+   "tool_call_reply": false,
+   "finish_reason": "stop"
+  },
+  {
+   "id": "heldout-reasoning-short-009",
+   "category": "reasoning",
+   "passed": true,
+   "reason": "ok",
+   "tool_call_reply": false,
+   "finish_reason": "stop"
+  },
+  {
+   "id": "heldout-reasoning-short-010",
+   "category": "reasoning",
+   "passed": true,
+   "reason": "ok",
+   "tool_call_reply": false,
+   "finish_reason": "stop"
+  },
+  {
+   "id": "heldout-reasoning-short-011",
+   "category": "reasoning",
+   "passed": true,
+   "reason": "ok",
+   "tool_call_reply": false,
+   "finish_reason": "stop"
+  },
+  {
+   "id": "heldout-reasoning-short-012",
+   "category": "reasoning",
+   "passed": true,
+   "reason": "ok",
+   "tool_call_reply": false,
+   "finish_reason": "stop"
+  },
+  {
+   "id": "heldout-reasoning-short-013",
+   "category": "reasoning",
+   "passed": true,
+   "reason": "ok",
+   "tool_call_reply": false,
+   "finish_reason": "stop"
+  },
+  {
+   "id": "heldout-reasoning-short-014",
+   "category": "reasoning",
+   "passed": true,
+   "reason": "ok",
+   "tool_call_reply": false,
+   "finish_reason": "stop"
+  },
+  {
+   "id": "heldout-reasoning-short-015",
+   "category": "reasoning",
+   "passed": true,
+   "reason": "ok",
+   "tool_call_reply": false,
+   "finish_reason": "stop"
+  },
+  {
+   "id": "heldout-reasoning-short-016",
+   "category": "reasoning",
+   "passed": true,
+   "reason": "ok",
+   "tool_call_reply": false,
+   "finish_reason": "stop"
+  },
+  {
+   "id": "heldout-reasoning-short-017",
+   "category": "reasoning",
+   "passed": true,
+   "reason": "ok",
+   "tool_call_reply": false,
+   "finish_reason": "stop"
+  },
+  {
+   "id": "heldout-reasoning-short-018",
+   "category": "reasoning",
+   "passed": true,
+   "reason": "ok",
+   "tool_call_reply": false,
+   "finish_reason": "stop"
+  },
+  {
+   "id": "heldout-reasoning-short-019",
+   "category": "reasoning",
+   "passed": true,
+   "reason": "ok",
+   "tool_call_reply": false,
+   "finish_reason": "stop"
+  }
+ ]
+}
