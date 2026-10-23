@@ -1,0 +1,918 @@
+{
+ "runs": [
+  {
+   "condition": "base-7b",
+   "set": "val",
+   "model_file": "models/qwen2.5-7b-instruct-a09a354-Q4_K_M.gguf",
+   "prompt": "base",
+   "tasks": 155,
+   "success": 68,
+   "rate": 0.439,
+   "ci95": [
+    0.363,
+    0.517
+   ],
+   "by_family": {
+    "incident": "5/55",
+    "request": "63/100"
+   },
+   "by_expected_outcome": {
+    "escalated": "0/25",
+    "need_information": "0/15",
+    "no_action_needed": "9/20",
+    "resolved": "59/95"
+   },
+   "failed_checks": {
+    "effects_allowed": 79,
+    "outcome": 52,
+    "unchanged": 46,
+    "healthy": 24,
+    "restarted": 16,
+    "release": 4,
+    "finished": 1
+   },
+   "stop_reasons": {
+    "finished": 154,
+    "max_steps": 1
+   },
+   "invalid_call_rate": 0.0,
+   "text_replies": 0,
+   "transport_errors": 0,
+   "tool_selection_ok": 0.452,
+   "episodes_with_unallowed_effects": 79,
+   "mean_steps": 4.01,
+   "calls_never_reading": 73,
+   "latency_s_p50": 3.25,
+   "latency_s_p95": 4.96,
+   "completion_tokens": 16978,
+   "max_prompt_tokens": 3205,
+   "dropped_parallel_calls": 3,
+   "raw": "results/raw/20261009T061841Z-base-7b-val.jsonl"
+  },
+  {
+   "condition": "base-7b",
+   "set": "test_unseen",
+   "model_file": "models/qwen2.5-7b-instruct-a09a354-Q4_K_M.gguf",
+   "prompt": "base",
+   "tasks": 155,
+   "success": 68,
+   "rate": 0.439,
+   "ci95": [
+    0.363,
+    0.517
+   ],
+   "by_family": {
+    "incident": "9/55",
+    "request": "59/100"
+   },
+   "by_expected_outcome": {
+    "escalated": "0/25",
+    "need_information": "0/15",
+    "no_action_needed": "4/20",
+    "resolved": "64/95"
+   },
+   "failed_checks": {
+    "effects_allowed": 77,
+    "outcome": 59,
+    "unchanged": 49,
+    "healthy": 26,
+    "restarted": 17,
+    "finished": 6,
+    "release": 5
+   },
+   "stop_reasons": {
+    "finished": 149,
+    "max_steps": 6
+   },
+   "invalid_call_rate": 0.0,
+   "text_replies": 0,
+   "transport_errors": 0,
+   "tool_selection_ok": 0.465,
+   "episodes_with_unallowed_effects": 77,
+   "mean_steps": 4.14,
+   "calls_never_reading": 80,
+   "latency_s_p50": 5.94,
+   "latency_s_p95": 14.27,
+   "completion_tokens": 19251,
+   "max_prompt_tokens": 3759,
+   "dropped_parallel_calls": 10,
+   "raw": "results/raw/20261009T062734Z-base-7b-test_unseen.jsonl"
+  },
+  {
+   "condition": "base-14b",
+   "set": "val",
+   "model_file": "models/qwen2.5-14b-instruct-cf98f3b-Q4_K_M.gguf",
+   "prompt": "base",
+   "tasks": 155,
+   "success": 100,
+   "rate": 0.645,
+   "ci95": [
+    0.567,
+    0.716
+   ],
+   "by_family": {
+    "incident": "24/55",
+    "request": "76/100"
+   },
+   "by_expected_outcome": {
+    "escalated": "5/25",
+    "need_information": "9/15",
+    "no_action_needed": "17/20",
+    "resolved": "69/95"
+   },
+   "failed_checks": {
+    "effects_allowed": 41,
+    "outcome": 39,
+    "unchanged": 23,
+    "healthy": 15,
+    "restarted": 13,
+    "finished": 7,
+    "release": 2
+   },
+   "stop_reasons": {
+    "finished": 148,
+    "max_steps": 2,
+    "max_retries": 5
+   },
+   "invalid_call_rate": 0.074,
+   "text_replies": 46,
+   "transport_errors": 4,
+   "tool_selection_ok": 0.658,
+   "episodes_with_unallowed_effects": 41,
+   "mean_steps": 4.02,
+   "calls_never_reading": 52,
+   "latency_s_p50": 11.47,
+   "latency_s_p95": 49.29,
+   "completion_tokens": 42800,
+   "max_prompt_tokens": 3249,
+   "dropped_parallel_calls": 375,
+   "raw": "results/raw/20261009T063345Z-base-14b-val.jsonl"
+  },
+  {
+   "condition": "improved-7b",
+   "set": "val",
+   "model_file": "models/qwen2.5-7b-instruct-a09a354-Q4_K_M.gguf",
+   "prompt": "improved",
+   "tasks": 155,
+   "success": 75,
+   "rate": 0.484,
+   "ci95": [
+    0.407,
+    0.562
+   ],
+   "by_family": {
+    "incident": "24/55",
+    "request": "51/100"
+   },
+   "by_expected_outcome": {
+    "escalated": "0/25",
+    "need_information": "2/15",
+    "no_action_needed": "8/20",
+    "resolved": "65/95"
+   },
+   "failed_checks": {
+    "outcome": 68,
+    "effects_allowed": 49,
+    "unchanged": 42,
+    "healthy": 12,
+    "restarted": 11,
+    "finished": 3
+   },
+   "stop_reasons": {
+    "finished": 152,
+    "max_steps": 1,
+    "max_retries": 2
+   },
+   "invalid_call_rate": 0.02,
+   "text_replies": 13,
+   "transport_errors": 0,
+   "tool_selection_ok": 0.561,
+   "episodes_with_unallowed_effects": 49,
+   "mean_steps": 4.1,
+   "calls_never_reading": 54,
+   "latency_s_p50": 6.81,
+   "latency_s_p95": 13.01,
+   "completion_tokens": 17532,
+   "max_prompt_tokens": 4070,
+   "dropped_parallel_calls": 4,
+   "raw": "results/raw/20261009T063345Z-improved-7b-val.jsonl"
+  },
+  {
+   "condition": "base-7b",
+   "set": "test_template",
+   "model_file": "models/qwen2.5-7b-instruct-a09a354-Q4_K_M.gguf",
+   "prompt": "base",
+   "tasks": 155,
+   "success": 65,
+   "rate": 0.419,
+   "ci95": [
+    0.345,
+    0.498
+   ],
+   "by_family": {
+    "incident": "11/55",
+    "request": "54/100"
+   },
+   "by_expected_outcome": {
+    "escalated": "1/25",
+    "need_information": "0/15",
+    "no_action_needed": "2/20",
+    "resolved": "62/95"
+   },
+   "failed_checks": {
+    "effects_allowed": 74,
+    "outcome": 63,
+    "unchanged": 45,
+    "healthy": 24,
+    "restarted": 17,
+    "finished": 8,
+    "release": 3
+   },
+   "stop_reasons": {
+    "finished": 147,
+    "max_retries": 1,
+    "max_steps": 7
+   },
+   "invalid_call_rate": 0.017,
+   "text_replies": 12,
+   "transport_errors": 8,
+   "tool_selection_ok": 0.484,
+   "episodes_with_unallowed_effects": 74,
+   "mean_steps": 4.51,
+   "calls_never_reading": 74,
+   "latency_s_p50": 9.27,
+   "latency_s_p95": 36.25,
+   "completion_tokens": 20815,
+   "max_prompt_tokens": 3845,
+   "dropped_parallel_calls": 11,
+   "raw": "results/raw/20261009T064647Z-base-7b-test_template.jsonl"
+  },
+  {
+   "condition": "improved-v2-7b",
+   "set": "val",
+   "model_file": "models/qwen2.5-7b-instruct-a09a354-Q4_K_M.gguf",
+   "prompt": "improved-v2",
+   "tasks": 155,
+   "success": 96,
+   "rate": 0.619,
+   "ci95": [
+    0.541,
+    0.692
+   ],
+   "by_family": {
+    "incident": "23/55",
+    "request": "73/100"
+   },
+   "by_expected_outcome": {
+    "escalated": "1/25",
+    "need_information": "3/15",
+    "no_action_needed": "10/20",
+    "resolved": "82/95"
+   },
+   "failed_checks": {
+    "effects_allowed": 51,
+    "outcome": 44,
+    "unchanged": 38,
+    "healthy": 9,
+    "restarted": 8,
+    "release": 2,
+    "finished": 2
+   },
+   "stop_reasons": {
+    "finished": 153,
+    "max_steps": 1,
+    "max_retries": 1
+   },
+   "invalid_call_rate": 0.048,
+   "text_replies": 31,
+   "transport_errors": 9,
+   "tool_selection_ok": 0.574,
+   "episodes_with_unallowed_effects": 51,
+   "mean_steps": 4.19,
+   "calls_never_reading": 66,
+   "latency_s_p50": 23.69,
+   "latency_s_p95": 49.03,
+   "completion_tokens": 18181,
+   "max_prompt_tokens": 4291,
+   "dropped_parallel_calls": 6,
+   "raw": "results/raw/20261009T065442Z-improved-v2-7b-val.jsonl"
+  },
+  {
+   "condition": "base-7b",
+   "set": "test_entity",
+   "model_file": "models/qwen2.5-7b-instruct-a09a354-Q4_K_M.gguf",
+   "prompt": "base",
+   "tasks": 155,
+   "success": 74,
+   "rate": 0.477,
+   "ci95": [
+    0.4,
+    0.556
+   ],
+   "by_family": {
+    "incident": "9/55",
+    "request": "65/100"
+   },
+   "by_expected_outcome": {
+    "escalated": "2/25",
+    "need_information": "0/15",
+    "no_action_needed": "8/20",
+    "resolved": "64/95"
+   },
+   "failed_checks": {
+    "effects_allowed": 76,
+    "outcome": 49,
+    "unchanged": 45,
+    "healthy": 18,
+    "restarted": 13,
+    "release": 3,
+    "finished": 1
+   },
+   "stop_reasons": {
+    "finished": 154,
+    "max_steps": 1
+   },
+   "invalid_call_rate": 0.007,
+   "text_replies": 4,
+   "transport_errors": 0,
+   "tool_selection_ok": 0.503,
+   "episodes_with_unallowed_effects": 76,
+   "mean_steps": 3.54,
+   "calls_never_reading": 81,
+   "latency_s_p50": 22.95,
+   "latency_s_p95": 34.19,
+   "completion_tokens": 15974,
+   "max_prompt_tokens": 3070,
+   "dropped_parallel_calls": 13,
+   "raw": "results/raw/20261009T085617Z-base-7b-test_entity.jsonl"
+  },
+  {
+   "condition": "improved-v2-7b",
+   "set": "test_unseen",
+   "model_file": "models/qwen2.5-7b-instruct-a09a354-Q4_K_M.gguf",
+   "prompt": "improved-v2",
+   "tasks": 155,
+   "success": 90,
+   "rate": 0.581,
+   "ci95": [
+    0.502,
+    0.655
+   ],
+   "by_family": {
+    "incident": "21/55",
+    "request": "69/100"
+   },
+   "by_expected_outcome": {
+    "escalated": "3/25",
+    "need_information": "4/15",
+    "no_action_needed": "5/20",
+    "resolved": "78/95"
+   },
+   "failed_checks": {
+    "effects_allowed": 58,
+    "outcome": 47,
+    "unchanged": 44,
+    "healthy": 16,
+    "restarted": 13,
+    "finished": 5,
+    "release": 1
+   },
+   "stop_reasons": {
+    "finished": 150,
+    "max_steps": 3,
+    "max_retries": 2
+   },
+   "invalid_call_rate": 0.018,
+   "text_replies": 11,
+   "transport_errors": 0,
+   "tool_selection_ok": 0.574,
+   "episodes_with_unallowed_effects": 58,
+   "mean_steps": 3.92,
+   "calls_never_reading": 67,
+   "latency_s_p50": 21.74,
+   "latency_s_p95": 32.13,
+   "completion_tokens": 16804,
+   "max_prompt_tokens": 3990,
+   "dropped_parallel_calls": 4,
+   "raw": "results/raw/20261009T092318Z-improved-v2-7b-test_unseen.jsonl"
+  },
+  {
+   "condition": "base-7b",
+   "set": "test_scenario",
+   "model_file": "models/qwen2.5-7b-instruct-a09a354-Q4_K_M.gguf",
+   "prompt": "base",
+   "tasks": 155,
+   "success": 69,
+   "rate": 0.445,
+   "ci95": [
+    0.369,
+    0.524
+   ],
+   "by_family": {
+    "incident": "8/55",
+    "request": "61/100"
+   },
+   "by_expected_outcome": {
+    "escalated": "1/25",
+    "need_information": "0/15",
+    "no_action_needed": "4/20",
+    "resolved": "64/95"
+   },
+   "failed_checks": {
+    "effects_allowed": 73,
+    "outcome": 60,
+    "unchanged": 46,
+    "healthy": 17,
+    "restarted": 10,
+    "finished": 6,
+    "release": 5
+   },
+   "stop_reasons": {
+    "finished": 149,
+    "max_steps": 5,
+    "max_retries": 1
+   },
+   "invalid_call_rate": 0.006,
+   "text_replies": 4,
+   "transport_errors": 0,
+   "tool_selection_ok": 0.51,
+   "episodes_with_unallowed_effects": 73,
+   "mean_steps": 4.15,
+   "calls_never_reading": 71,
+   "latency_s_p50": 21.51,
+   "latency_s_p95": 31.37,
+   "completion_tokens": 18676,
+   "max_prompt_tokens": 3189,
+   "dropped_parallel_calls": 0,
+   "raw": "results/raw/20261009T095156Z-base-7b-test_scenario.jsonl"
+  },
+  {
+   "condition": "improved-v2-7b",
+   "set": "test_template",
+   "model_file": "models/qwen2.5-7b-instruct-a09a354-Q4_K_M.gguf",
+   "prompt": "improved-v2",
+   "tasks": 155,
+   "success": 81,
+   "rate": 0.523,
+   "ci95": [
+    0.444,
+    0.6
+   ],
+   "by_family": {
+    "incident": "17/55",
+    "request": "64/100"
+   },
+   "by_expected_outcome": {
+    "escalated": "3/25",
+    "need_information": "5/15",
+    "no_action_needed": "3/20",
+    "resolved": "70/95"
+   },
+   "failed_checks": {
+    "effects_allowed": 60,
+    "outcome": 49,
+    "unchanged": 41,
+    "healthy": 22,
+    "restarted": 17,
+    "finished": 5,
+    "release": 2
+   },
+   "stop_reasons": {
+    "finished": 150,
+    "max_steps": 3,
+    "max_retries": 2
+   },
+   "invalid_call_rate": 0.03,
+   "text_replies": 20,
+   "transport_errors": 0,
+   "tool_selection_ok": 0.542,
+   "episodes_with_unallowed_effects": 60,
+   "mean_steps": 4.3,
+   "calls_never_reading": 60,
+   "latency_s_p50": 19.82,
+   "latency_s_p95": 33.43,
+   "completion_tokens": 19053,
+   "max_prompt_tokens": 4261,
+   "dropped_parallel_calls": 8,
+   "raw": "results/raw/20261009T102204Z-improved-v2-7b-test_template.jsonl"
+  },
+  {
+   "condition": "base-7b",
+   "set": "test_seen",
+   "model_file": "models/qwen2.5-7b-instruct-a09a354-Q4_K_M.gguf",
+   "prompt": "base",
+   "tasks": 155,
+   "success": 66,
+   "rate": 0.426,
+   "ci95": [
+    0.351,
+    0.505
+   ],
+   "by_family": {
+    "incident": "5/55",
+    "request": "61/100"
+   },
+   "by_expected_outcome": {
+    "escalated": "0/25",
+    "need_information": "0/15",
+    "no_action_needed": "6/20",
+    "resolved": "60/95"
+   },
+   "failed_checks": {
+    "effects_allowed": 77,
+    "outcome": 61,
+    "unchanged": 46,
+    "healthy": 26,
+    "restarted": 15,
+    "finished": 5,
+    "release": 4
+   },
+   "stop_reasons": {
+    "finished": 150,
+    "max_steps": 3,
+    "max_retries": 2
+   },
+   "invalid_call_rate": 0.012,
+   "text_replies": 8,
+   "transport_errors": 0,
+   "tool_selection_ok": 0.445,
+   "episodes_with_unallowed_effects": 77,
+   "mean_steps": 4.33,
+   "calls_never_reading": 74,
+   "latency_s_p50": 18.19,
+   "latency_s_p95": 27.95,
+   "completion_tokens": 19672,
+   "max_prompt_tokens": 2990,
+   "dropped_parallel_calls": 6,
+   "raw": "results/raw/20261009T105432Z-base-7b-test_seen.jsonl"
+  },
+  {
+   "condition": "improved-v2-7b",
+   "set": "test_entity",
+   "model_file": "models/qwen2.5-7b-instruct-a09a354-Q4_K_M.gguf",
+   "prompt": "improved-v2",
+   "tasks": 155,
+   "success": 91,
+   "rate": 0.587,
+   "ci95": [
+    0.508,
+    0.662
+   ],
+   "by_family": {
+    "incident": "21/55",
+    "request": "70/100"
+   },
+   "by_expected_outcome": {
+    "escalated": "4/25",
+    "need_information": "3/15",
+    "no_action_needed": "7/20",
+    "resolved": "77/95"
+   },
+   "failed_checks": {
+    "effects_allowed": 51,
+    "outcome": 45,
+    "unchanged": 39,
+    "healthy": 17,
+    "restarted": 11,
+    "finished": 5,
+    "release": 3
+   },
+   "stop_reasons": {
+    "finished": 150,
+    "max_retries": 5
+   },
+   "invalid_call_rate": 0.042,
+   "text_replies": 26,
+   "transport_errors": 0,
+   "tool_selection_ok": 0.587,
+   "episodes_with_unallowed_effects": 51,
+   "mean_steps": 3.97,
+   "calls_never_reading": 67,
+   "latency_s_p50": 13.01,
+   "latency_s_p95": 30.7,
+   "completion_tokens": 18389,
+   "max_prompt_tokens": 3656,
+   "dropped_parallel_calls": 2,
+   "raw": "results/raw/20261009T112546Z-improved-v2-7b-test_entity.jsonl"
+  },
+  {
+   "condition": "improved-v2-7b",
+   "set": "test_scenario",
+   "model_file": "models/qwen2.5-7b-instruct-a09a354-Q4_K_M.gguf",
+   "prompt": "improved-v2",
+   "tasks": 155,
+   "success": 82,
+   "rate": 0.529,
+   "ci95": [
+    0.451,
+    0.606
+   ],
+   "by_family": {
+    "incident": "19/55",
+    "request": "63/100"
+   },
+   "by_expected_outcome": {
+    "escalated": "0/25",
+    "need_information": "3/15",
+    "no_action_needed": "5/20",
+    "resolved": "74/95"
+   },
+   "failed_checks": {
+    "effects_allowed": 58,
+    "outcome": 52,
+    "unchanged": 39,
+    "healthy": 18,
+    "restarted": 16,
+    "finished": 8,
+    "release": 3
+   },
+   "stop_reasons": {
+    "finished": 147,
+    "max_steps": 1,
+    "max_retries": 7
+   },
+   "invalid_call_rate": 0.072,
+   "text_replies": 45,
+   "transport_errors": 0,
+   "tool_selection_ok": 0.542,
+   "episodes_with_unallowed_effects": 58,
+   "mean_steps": 4.05,
+   "calls_never_reading": 67,
+   "latency_s_p50": 8.68,
+   "latency_s_p95": 18.52,
+   "completion_tokens": 18364,
+   "max_prompt_tokens": 3690,
+   "dropped_parallel_calls": 6,
+   "raw": "results/raw/20261009T120439Z-improved-v2-7b-test_scenario.jsonl"
+  },
+  {
+   "condition": "improved-v2-7b",
+   "set": "test_seen",
+   "model_file": "models/qwen2.5-7b-instruct-a09a354-Q4_K_M.gguf",
+   "prompt": "improved-v2",
+   "tasks": 155,
+   "success": 85,
+   "rate": 0.548,
+   "ci95": [
+    0.47,
+    0.625
+   ],
+   "by_family": {
+    "incident": "22/55",
+    "request": "63/100"
+   },
+   "by_expected_outcome": {
+    "escalated": "1/25",
+    "need_information": "1/15",
+    "no_action_needed": "7/20",
+    "resolved": "76/95"
+   },
+   "failed_checks": {
+    "outcome": 55,
+    "effects_allowed": 54,
+    "unchanged": 39,
+    "healthy": 14,
+    "restarted": 12,
+    "finished": 7,
+    "release": 3
+   },
+   "stop_reasons": {
+    "finished": 148,
+    "max_retries": 7
+   },
+   "invalid_call_rate": 0.062,
+   "text_replies": 38,
+   "transport_errors": 0,
+   "tool_selection_ok": 0.587,
+   "episodes_with_unallowed_effects": 54,
+   "mean_steps": 3.95,
+   "calls_never_reading": 66,
+   "latency_s_p50": 6.63,
+   "latency_s_p95": 16.81,
+   "completion_tokens": 18848,
+   "max_prompt_tokens": 3895,
+   "dropped_parallel_calls": 2,
+   "raw": "results/raw/20261009T123358Z-improved-v2-7b-test_seen.jsonl"
+  },
+  {
+   "condition": "base-14b",
+   "set": "test_unseen",
+   "model_file": "models/qwen2.5-14b-instruct-cf98f3b-Q4_K_M.gguf",
+   "prompt": "base",
+   "tasks": 155,
+   "success": 98,
+   "rate": 0.632,
+   "ci95": [
+    0.554,
+    0.704
+   ],
+   "by_family": {
+    "incident": "30/55",
+    "request": "68/100"
+   },
+   "by_expected_outcome": {
+    "escalated": "4/25",
+    "need_information": "1/15",
+    "no_action_needed": "12/20",
+    "resolved": "81/95"
+   },
+   "failed_checks": {
+    "outcome": 46,
+    "effects_allowed": 45,
+    "unchanged": 34,
+    "healthy": 10,
+    "finished": 8,
+    "restarted": 7,
+    "release": 1
+   },
+   "stop_reasons": {
+    "finished": 147,
+    "max_steps": 5,
+    "max_retries": 3
+   },
+   "invalid_call_rate": 0.046,
+   "text_replies": 29,
+   "transport_errors": 0,
+   "tool_selection_ok": 0.658,
+   "episodes_with_unallowed_effects": 45,
+   "mean_steps": 4.07,
+   "calls_never_reading": 56,
+   "latency_s_p50": 4.65,
+   "latency_s_p95": 15.45,
+   "completion_tokens": 39419,
+   "max_prompt_tokens": 3194,
+   "dropped_parallel_calls": 187,
+   "raw": "results/raw/20261009T125623Z-base-14b-test_unseen.jsonl"
+  },
+  {
+   "condition": "improved-v2-14b",
+   "set": "test_unseen",
+   "model_file": "models/qwen2.5-14b-instruct-cf98f3b-Q4_K_M.gguf",
+   "prompt": "improved-v2",
+   "tasks": 155,
+   "success": 113,
+   "rate": 0.729,
+   "ci95": [
+    0.654,
+    0.793
+   ],
+   "by_family": {
+    "incident": "38/55",
+    "request": "75/100"
+   },
+   "by_expected_outcome": {
+    "escalated": "12/25",
+    "need_information": "8/15",
+    "no_action_needed": "12/20",
+    "resolved": "81/95"
+   },
+   "failed_checks": {
+    "outcome": 38,
+    "effects_allowed": 24,
+    "unchanged": 24,
+    "finished": 12,
+    "healthy": 3,
+    "restarted": 2,
+    "release": 1
+   },
+   "stop_reasons": {
+    "finished": 143,
+    "max_steps": 5,
+    "max_retries": 7
+   },
+   "invalid_call_rate": 0.111,
+   "text_replies": 76,
+   "transport_errors": 0,
+   "tool_selection_ok": 0.742,
+   "episodes_with_unallowed_effects": 24,
+   "mean_steps": 4.42,
+   "calls_never_reading": 53,
+   "latency_s_p50": 3.22,
+   "latency_s_p95": 12.86,
+   "completion_tokens": 29110,
+   "max_prompt_tokens": 4304,
+   "dropped_parallel_calls": 125,
+   "raw": "results/raw/20261009T131322Z-improved-v2-14b-test_unseen.jsonl"
+  }
+ ],
+ "pairs": {
+  "base-7b vs improved-v2-7b": [
+   {
+    "set": "test_entity",
+    "tasks": 155,
+    "base-7b": 74,
+    "improved-v2-7b": 91,
+    "only_base-7b": 6,
+    "only_improved-v2-7b": 23,
+    "p_mcnemar": 0.0023
+   },
+   {
+    "set": "test_scenario",
+    "tasks": 155,
+    "base-7b": 69,
+    "improved-v2-7b": 82,
+    "only_base-7b": 4,
+    "only_improved-v2-7b": 17,
+    "p_mcnemar": 0.0072
+   },
+   {
+    "set": "test_seen",
+    "tasks": 155,
+    "base-7b": 66,
+    "improved-v2-7b": 85,
+    "only_base-7b": 4,
+    "only_improved-v2-7b": 23,
+    "p_mcnemar": 0.0003
+   },
+   {
+    "set": "test_template",
+    "tasks": 155,
+    "base-7b": 65,
+    "improved-v2-7b": 81,
+    "only_base-7b": 4,
+    "only_improved-v2-7b": 20,
+    "p_mcnemar": 0.0015
+   },
+   {
+    "set": "test_unseen",
+    "tasks": 155,
+    "base-7b": 68,
+    "improved-v2-7b": 90,
+    "only_base-7b": 0,
+    "only_improved-v2-7b": 22,
+    "p_mcnemar": 0.0
+   },
+   {
+    "set": "val",
+    "tasks": 155,
+    "base-7b": 68,
+    "improved-v2-7b": 96,
+    "only_base-7b": 2,
+    "only_improved-v2-7b": 30,
+    "p_mcnemar": 0.0
+   }
+  ],
+  "base-7b vs base-14b": [
+   {
+    "set": "test_unseen",
+    "tasks": 155,
+    "base-7b": 68,
+    "base-14b": 98,
+    "only_base-7b": 5,
+    "only_base-14b": 35,
+    "p_mcnemar": 0.0
+   },
+   {
+    "set": "val",
+    "tasks": 155,
+    "base-7b": 68,
+    "base-14b": 100,
+    "only_base-7b": 9,
+    "only_base-14b": 41,
+    "p_mcnemar": 0.0
+   }
+  ],
+  "improved-v2-7b vs improved-v2-14b": [
+   {
+    "set": "test_unseen",
+    "tasks": 155,
+    "improved-v2-7b": 90,
+    "improved-v2-14b": 113,
+    "only_improved-v2-7b": 12,
+    "only_improved-v2-14b": 35,
+    "p_mcnemar": 0.0011
+   }
+  ],
+  "base-14b vs improved-v2-14b": [
+   {
+    "set": "test_unseen",
+    "tasks": 155,
+    "base-14b": 98,
+    "improved-v2-14b": 113,
+    "only_base-14b": 14,
+    "only_improved-v2-14b": 29,
+    "p_mcnemar": 0.0315
+   }
+  ],
+  "base-14b vs improved-v2-7b": [
+   {
+    "set": "test_unseen",
+    "tasks": 155,
+    "base-14b": 98,
+    "improved-v2-7b": 90,
+    "only_base-14b": 23,
+    "only_improved-v2-7b": 15,
+    "p_mcnemar": 0.2559
+   },
+   {
+    "set": "val",
+    "tasks": 155,
+    "base-14b": 100,
+    "improved-v2-7b": 96,
+    "only_base-14b": 22,
+    "only_improved-v2-7b": 18,
+    "p_mcnemar": 0.6358
+   }
+  ]
+ }
+}
