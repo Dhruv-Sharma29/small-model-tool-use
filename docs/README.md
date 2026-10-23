@@ -61,11 +61,14 @@ interface (`results/summary/m5-transfer.md`).
 - **M6, data quantity:** 310 runbook examples give 49% on test_unseen, not distinguishable from
   the untuned 44% (p = 0.36) though with 9 unallowed effects instead of 77; 1,240 give 84% (5 vs 59
   discordant against 310) (`results/summary/m6-data-quantity.md`).
-- **Not done yet:** seed spread, the controlled latency and memory benchmark (needs the GPU to
-  itself), further ablations and the write-up.
+- **Latency and memory:** against the 14B with the improved prompt, the tuned 7B is about 5x faster per episode at the
+median (3.3 vs 16.2 s), 9x at p95 (4.0 vs 36.6 s) and needs 2.3x less GPU memory (6.3 vs 14.6 GB),
+measured one model at a time on an otherwise idle GPU (`results/summary/latency.md`).
+- **Not done yet:** seed spread (two more training seeds running), further ablations and the write-up.
 
 The research question has a first answer on accuracy: in this simulated setting a tuned 7B beats
-both better prompting and a 2x larger model. Seed spread and the latency/memory cost are still owed. See [06](06-roadmap.md) for what comes next and
+both better prompting and a 2x larger model, at a fifth of the 14B's latency and less than half its
+memory, but only on the tool interface it was trained on. Seed spread is still owed. See [06](06-roadmap.md) for what comes next and
 [09](09-implementation-notes.md) for the places where building it changed the plan.
 
 ## Conventions used in these docs

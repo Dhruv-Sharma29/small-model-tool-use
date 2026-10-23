@@ -11,7 +11,7 @@ acceptance view: what each milestone must show, what closed it, and what is next
 | M2 Leak-resistant splits | **Done** | 0 factor leakage, test_unseen shares no example with train ([03](03-dataset-card.md)) |
 | M3 Baselines | **Done** | `results/summary/m3.md` ([05](05-evaluation.md)) |
 | M4 Pilot fine-tune | **Pilots done, val only** | Two 310-example pilots, reload check passed ([04](04-fine-tuning.md)) |
-| M5 Full comparison | **Main result in (one seed): test_unseen 130/155 (84%)**; transfer check done (12/30 vs base 16/30 on 02's live harness); seeds and latency pending | LoRA on 1,240 runbook trajectories (40 per kind-variant, `.run/adapters/runbook-1240`), then export and evaluation |
+| M5 Full comparison | **Main result in (one seed): test_unseen 130/155 (84%)**; transfer check done (12/30 vs base 16/30 on 02's live harness); latency measured (`results/summary/latency.md`); seeds pending | LoRA on 1,240 runbook trajectories (40 per kind-variant, `.run/adapters/runbook-1240`), then export and evaluation |
 | M6 Ablations | **Data quantity done** (310 vs 1,240 on test_unseen, paired) | `results/summary/m6-data-quantity.md` |
 
 ## What changed from the original plan, and why
@@ -64,8 +64,10 @@ adapter reproduces its evaluated scores.
 
 Done on 2026-10-23: the 1,240-example checkpoint on all six held-out sets with paired tests against
 `improved-v2-7b` and `improved-v2-14b`, a failure analysis by kind and failed check, and the
-general-capability check (`results/summary/m5-analysis.md`). Still owed: training-seed spread, the
-latency/memory benchmark. The transfer check is done: in 02's own live harness, with 02's tools and prompt and only the weights changed, the tuned 7B
+general-capability check (`results/summary/m5-analysis.md`). Also done: the latency/memory benchmark: against the 14B with the improved prompt, the tuned 7B is about 5x faster per episode at the
+median (3.3 vs 16.2 s), 9x at p95 (4.0 vs 36.6 s) and needs 2.3x less GPU memory (6.3 vs 14.6 GB),
+measured one model at a time on an otherwise idle GPU (`results/summary/latency.md`). Still owed: training-seed
+spread. The transfer check is done: in 02's own live harness, with 02's tools and prompt and only the weights changed, the tuned 7B
 scored 12/30 against the base model's 16/30 (p = 0.42): the gain does not carry over to another tool
 interface (`results/summary/m5-transfer.md`).
 
@@ -80,7 +82,7 @@ interface (`results/summary/m5-transfer.md`).
 **SHOULD:**
 - A small general-capability set, base vs tuned, to catch regressions from specialisation.
 - ~~The transfer check on 02's 30 live incidents.~~ Done 2026-10-23 (see above).
-- The controlled latency and peak-memory benchmark, one model loaded at a time.
+- ~~The controlled latency and peak-memory benchmark.~~ Done 2026-10-23.
 
 **Done when:** a test_unseen result for a tuned model with paired comparisons and seed spread
 exists in `results/summary/`, plus a failure analysis by kind and failed check.

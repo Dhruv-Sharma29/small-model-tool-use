@@ -13,7 +13,8 @@ by trusting what the model says it did.
 > improved prompt (73%, p = 0.0076), with no general-capability regression
 > (`results/summary/m5-analysis.md`). One seed so far. The gain is tied to the trained tool
 > interface: in project 02's live harness, with its own tools, the tuned model scored 12/30 vs the
-> base model's 16/30 (`results/summary/m5-transfer.md`). Detail: [docs/README.md#status](docs/README.md#status).
+> base model's 16/30 (`results/summary/m5-transfer.md`). Cost: about 5x faster per episode than the 14B with the
+> improved prompt, with 2.3x less GPU memory (`results/summary/latency.md`). Detail: [docs/README.md#status](docs/README.md#status).
 
 ## Research question
 

@@ -118,7 +118,7 @@ points anyway ([06](06-roadmap.md) § Cut line).
 | "62% accuracy" | "96/155 on val, 95% CI 0.54–0.69" |
 | "Deterministic evaluation" | "Deterministic sandbox and scoring; temperature-0 serving with 4 slots flips about 4 of 155 tasks between runs" |
 | "Tested on real incidents" | "Tested on a deterministic model of project 02's sandbox; on 02's live harness, with its own tools, the gain did not transfer (12/30 vs 16/30)" |
-| "Faster and smaller" | Nothing yet: latency and memory are not measured |
+| "Faster and smaller" | "About 5x faster per episode than the 14B with the improved prompt and 2.3x less GPU memory, one model at a time, Q4_K_M, 40 tasks" |
 | "No leakage" | "No held-out template, entity or scenario combination occurs in train (tested); seen-template sets still allow 37–40% by prompt lookup, so test_unseen is primary" |
 
 ## The question to have a real answer for

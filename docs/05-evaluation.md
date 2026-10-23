@@ -172,16 +172,24 @@ seeds. The measured spread (4 flips, net 2) is one sample, not a bound.
 
 ## Latency and memory
 
-The research question asks for them, and they are **not measured yet**. Accuracy runs overlap on a
-shared GPU with other users' jobs, which is fine for accuracy (temperature 0, fixed tasks) and
-useless for latency: per-call p50 latency across the M3 runs ranges from 3.2 s to 23.7 s
-(`results/summary/m3.json`), mostly from load, not from the model. Latency and memory will come from
-a controlled benchmark with one model loaded at a time (PLAN.md, Decisions). The only resource
-numbers so far are training ones: peak 19.7 GiB allocated for the pilot.
+Accuracy runs overlap on a shared GPU with other users' jobs, which is fine for accuracy
+(temperature 0, fixed tasks) and useless for latency: per-call p50 latency across the M3 runs
+ranges from 3.2 s to 23.7 s (`results/summary/m3.json`), mostly from load. So latency and memory come
+from `eval/bench_latency.py`: one model at a time, one request at a time, the first 40 val tasks,
+on an otherwise idle GPU (2026-10-23, `results/summary/latency.md`).
+
+| Condition | Model call p50 / p95 | Episode p50 / p95 | Decode tok/s | Server GPU memory |
+| --- | --- | --- | --- | --- |
+| base 7B | 0.55 / 1.09 s | 2.63 / 12.03 s | 42.4 | 6.3 GB |
+| **tuned 7B (M5)** | **0.55 / 0.79 s** | **3.27 / 3.99 s** | 42.7 | **6.3 GB** |
+| 7B + improved prompt | 0.53 / 3.04 s | 4.34 / 10.55 s | 42.2 | 6.3 GB |
+| 14B + improved prompt | 1.75 / 6.76 s | 16.22 / 36.55 s | 21.3 | 14.6 GB |
+
+The tuned 7B is about 5x faster per episode than the 14B with the improved prompt at the median and
+9x at p95, with 2.3x less memory. Success on these 40 timing tasks is not the accuracy result.
 
 ## Not built yet
 
 | Item | Why it matters | Plan |
 | --- | --- | --- |
 | Repeated seeds | Spread across training runs, not just serving | M5 (running) |
-| Controlled latency/memory benchmark | The cost half of the question | M5, one model at a time |
