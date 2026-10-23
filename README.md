@@ -60,7 +60,7 @@ The runbook result shows every task can be solved from what the tools return. It
 the catalogue, so it is an upper bound, not a realistic baseline. The trivial strategies set the
 floor a model has to beat.
 
-**Scorer tests** (2,465): the reference passes every scenario, and these plausible-looking wrong
+**Scorer tests** (2,453 in `tests/test_scorer.py`): the reference passes every scenario, and these plausible-looking wrong
 trajectories fail in every scenario where they apply: wrong outcome, claiming success without
 acting, one extra unneeded action, restarting the wrong worker, the wrong action. Disabling any of
 the scorer's checks makes at least one test fail (mutation check, including a test for a sandbox
@@ -118,7 +118,7 @@ More detail: [docs/01-architecture.md](docs/01-architecture.md).
 
 ```bash
 uv sync
-uv run pytest                                   # 2,474 tests: validation, scorer, wrong trajectories, split overlap
+uv run pytest                                   # 2,476 tests: validation, scorer, wrong trajectories, split overlap, SFT answer leak
 uv run python -m eval.m1                        # reference / runbook / trivial policies -> results/summary/m1.*
 uv run python -m tasks.splits.build             # train / val / test sets -> data/ (from the frozen splits)
 uv run python -m eval.m2_audit                  # overlap audit -> results/summary/m2_audit.*
