@@ -1,0 +1,163 @@
+{
+ "splits_sha": "c5b228f3fc10c969",
+ "leakage": {
+  "templates": [],
+  "scenarios": [],
+  "entities": []
+ },
+ "sets": {
+  "val": {
+   "tasks": 155,
+   "held_out_factors": [],
+   "uses_held_out": {
+    "templates": 0,
+    "scenarios": 0,
+    "tasks_with_held_out_entities": 0
+   },
+   "same_example_as_train": 127,
+   "prompt_lookup_ceiling": 0.374,
+   "prompt_similarity": {
+    "median": 1.0,
+    "p95": 1.0,
+    "max": 1.0,
+    "share_ge_0.8": 0.942
+   }
+  },
+  "test_seen": {
+   "tasks": 155,
+   "held_out_factors": [],
+   "uses_held_out": {
+    "templates": 0,
+    "scenarios": 0,
+    "tasks_with_held_out_entities": 0
+   },
+   "same_example_as_train": 134,
+   "prompt_lookup_ceiling": 0.381,
+   "prompt_similarity": {
+    "median": 1.0,
+    "p95": 1.0,
+    "max": 1.0,
+    "share_ge_0.8": 0.935
+   }
+  },
+  "test_template": {
+   "tasks": 155,
+   "held_out_factors": [
+    "template"
+   ],
+   "uses_held_out": {
+    "templates": 155,
+    "scenarios": 0,
+    "tasks_with_held_out_entities": 0
+   },
+   "same_example_as_train": 0,
+   "prompt_lookup_ceiling": 0.0,
+   "prompt_similarity": {
+    "median": 0.0,
+    "p95": 0.222,
+    "max": 0.6,
+    "share_ge_0.8": 0.0
+   }
+  },
+  "test_entity": {
+   "tasks": 155,
+   "held_out_factors": [
+    "entity"
+   ],
+   "uses_held_out": {
+    "templates": 0,
+    "scenarios": 0,
+    "tasks_with_held_out_entities": 155
+   },
+   "same_example_as_train": 100,
+   "prompt_lookup_ceiling": 0.29,
+   "prompt_similarity": {
+    "median": 1.0,
+    "p95": 1.0,
+    "max": 1.0,
+    "share_ge_0.8": 0.742
+   }
+  },
+  "test_scenario": {
+   "tasks": 155,
+   "held_out_factors": [
+    "scenario"
+   ],
+   "uses_held_out": {
+    "templates": 0,
+    "scenarios": 155,
+    "tasks_with_held_out_entities": 0
+   },
+   "same_example_as_train": 131,
+   "prompt_lookup_ceiling": 0.4,
+   "prompt_similarity": {
+    "median": 1.0,
+    "p95": 1.0,
+    "max": 1.0,
+    "share_ge_0.8": 0.942
+   }
+  },
+  "test_unseen": {
+   "tasks": 155,
+   "held_out_factors": [
+    "template",
+    "entity",
+    "scenario"
+   ],
+   "uses_held_out": {
+    "templates": 155,
+    "scenarios": 155,
+    "tasks_with_held_out_entities": 155
+   },
+   "same_example_as_train": 0,
+   "prompt_lookup_ceiling": 0.0,
+   "prompt_similarity": {
+    "median": 0.0,
+    "p95": 0.2,
+    "max": 0.333,
+    "share_ge_0.8": 0.0
+   }
+  }
+ },
+ "template_frames": {
+  "max": 0.2,
+  "median": 0.0,
+  "top": [
+   {
+    "held_out": "request.restart_service.6",
+    "closest_train": "request.restart_service.0",
+    "jaccard": 0.2,
+    "text": "Go ahead and restart the <slot>.",
+    "closest_text": "Please restart the <slot>."
+   },
+   {
+    "held_out": "request.if_spool_full.6",
+    "closest_train": "request.if_spool_full.1",
+    "jaccard": 0.19,
+    "text": "Check disk usage on the spool; clean temp files if it's over quota.",
+    "closest_text": "<slot> here: check the spool and clean temp files only if it's over quota."
+   },
+   {
+    "held_out": "request.undo_config_by_author.6",
+    "closest_train": "request.undo_config_by_author.0",
+    "jaccard": 0.182,
+    "text": "Go ahead and revert the config change '<slot>' by <slot>.",
+    "closest_text": "Please undo the config change <slot> made."
+   },
+   {
+    "held_out": "request.restart_service.3",
+    "closest_train": "request.restart_service.2",
+    "jaccard": 0.125,
+    "text": "Ticket OPS-<slot>: restart the <slot> after the library update.",
+    "closest_text": "Restart the <slot>, please."
+   },
+   {
+    "held_out": "request.restart_ambiguous.6",
+    "closest_train": "request.restart_ambiguous.1",
+    "jaccard": 0.111,
+    "text": "Go ahead and restart the worker please.",
+    "closest_text": "<slot> here: can you restart the worker?"
+   }
+  ]
+ }
+}

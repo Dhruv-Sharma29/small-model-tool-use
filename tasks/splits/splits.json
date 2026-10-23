@@ -1,0 +1,431 @@
+{
+ "created": "2026-10-09T05:58:19+00:00",
+ "seed": 20261009,
+ "note": "Frozen before any example was generated. Do not edit; see make_splits.py.",
+ "templates": {
+  "held_out_frames": [
+   3,
+   6
+  ],
+  "held_out": [
+   "alert.api_4xx.3",
+   "alert.api_4xx.6",
+   "alert.api_errors.3",
+   "alert.api_errors.6",
+   "alert.disk_space.3",
+   "alert.disk_space.6",
+   "alert.job_failures.3",
+   "alert.job_failures.6",
+   "alert.jobs_lagging.3",
+   "alert.jobs_lagging.6",
+   "alert.payments_slow.3",
+   "alert.payments_slow.6",
+   "request.cleanup.3",
+   "request.cleanup.6",
+   "request.if_hung.3",
+   "request.if_hung.6",
+   "request.if_spool_full.3",
+   "request.if_spool_full.6",
+   "request.restart_ambiguous.3",
+   "request.restart_ambiguous.6",
+   "request.restart_failed.3",
+   "request.restart_failed.6",
+   "request.restart_instance.3",
+   "request.restart_instance.6",
+   "request.restart_service.3",
+   "request.restart_service.6",
+   "request.rollback_release.3",
+   "request.rollback_release.6",
+   "request.scale.3",
+   "request.scale.6",
+   "request.scale_unspecified.3",
+   "request.scale_unspecified.6",
+   "request.unavailable.3",
+   "request.unavailable.6",
+   "request.undo_config_by_author.3",
+   "request.undo_config_by_author.6"
+  ],
+  "train": [
+   "alert.api_4xx.0",
+   "alert.api_4xx.1",
+   "alert.api_4xx.2",
+   "alert.api_4xx.4",
+   "alert.api_4xx.5",
+   "alert.api_4xx.7",
+   "alert.api_errors.0",
+   "alert.api_errors.1",
+   "alert.api_errors.2",
+   "alert.api_errors.4",
+   "alert.api_errors.5",
+   "alert.api_errors.7",
+   "alert.disk_space.0",
+   "alert.disk_space.1",
+   "alert.disk_space.2",
+   "alert.disk_space.4",
+   "alert.disk_space.5",
+   "alert.disk_space.7",
+   "alert.job_failures.0",
+   "alert.job_failures.1",
+   "alert.job_failures.2",
+   "alert.job_failures.4",
+   "alert.job_failures.5",
+   "alert.job_failures.7",
+   "alert.jobs_lagging.0",
+   "alert.jobs_lagging.1",
+   "alert.jobs_lagging.2",
+   "alert.jobs_lagging.4",
+   "alert.jobs_lagging.5",
+   "alert.jobs_lagging.7",
+   "alert.payments_slow.0",
+   "alert.payments_slow.1",
+   "alert.payments_slow.2",
+   "alert.payments_slow.4",
+   "alert.payments_slow.5",
+   "alert.payments_slow.7",
+   "request.cleanup.0",
+   "request.cleanup.1",
+   "request.cleanup.2",
+   "request.cleanup.4",
+   "request.cleanup.5",
+   "request.cleanup.7",
+   "request.if_hung.0",
+   "request.if_hung.1",
+   "request.if_hung.2",
+   "request.if_hung.4",
+   "request.if_hung.5",
+   "request.if_hung.7",
+   "request.if_spool_full.0",
+   "request.if_spool_full.1",
+   "request.if_spool_full.2",
+   "request.if_spool_full.4",
+   "request.if_spool_full.5",
+   "request.if_spool_full.7",
+   "request.restart_ambiguous.0",
+   "request.restart_ambiguous.1",
+   "request.restart_ambiguous.2",
+   "request.restart_ambiguous.4",
+   "request.restart_ambiguous.5",
+   "request.restart_ambiguous.7",
+   "request.restart_failed.0",
+   "request.restart_failed.1",
+   "request.restart_failed.2",
+   "request.restart_failed.4",
+   "request.restart_failed.5",
+   "request.restart_failed.7",
+   "request.restart_instance.0",
+   "request.restart_instance.1",
+   "request.restart_instance.2",
+   "request.restart_instance.4",
+   "request.restart_instance.5",
+   "request.restart_instance.7",
+   "request.restart_service.0",
+   "request.restart_service.1",
+   "request.restart_service.2",
+   "request.restart_service.4",
+   "request.restart_service.5",
+   "request.restart_service.7",
+   "request.rollback_release.0",
+   "request.rollback_release.1",
+   "request.rollback_release.2",
+   "request.rollback_release.4",
+   "request.rollback_release.5",
+   "request.rollback_release.7",
+   "request.scale.0",
+   "request.scale.1",
+   "request.scale.2",
+   "request.scale.4",
+   "request.scale.5",
+   "request.scale.7",
+   "request.scale_unspecified.0",
+   "request.scale_unspecified.1",
+   "request.scale_unspecified.2",
+   "request.scale_unspecified.4",
+   "request.scale_unspecified.5",
+   "request.scale_unspecified.7",
+   "request.unavailable.0",
+   "request.unavailable.1",
+   "request.unavailable.2",
+   "request.unavailable.4",
+   "request.unavailable.5",
+   "request.unavailable.7",
+   "request.undo_config_by_author.0",
+   "request.undo_config_by_author.1",
+   "request.undo_config_by_author.2",
+   "request.undo_config_by_author.4",
+   "request.undo_config_by_author.5",
+   "request.undo_config_by_author.7"
+  ]
+ },
+ "entities": {
+  "authors": {
+   "held_out": [
+    "crossi",
+    "dmuller",
+    "jmartin",
+    "mkhan",
+    "okafor",
+    "pkowalski",
+    "rpatel"
+   ],
+   "train": [
+    "jdoe",
+    "asmith",
+    "lchen",
+    "tnguyen",
+    "bwilliams",
+    "sgarcia",
+    "ykim",
+    "fsilva",
+    "hsato",
+    "ivanova",
+    "nbanerjee",
+    "eodonnell",
+    "deploy-bot",
+    "config-sync",
+    "release-ci",
+    "platform-ops",
+    "infra-bot"
+   ]
+  },
+  "bad_db_changes": {
+   "held_out": [
+    "api.db_host=db-old.internal",
+    "api.db_host=pg-eu-1.internal",
+    "api.db_name=jobs_v2",
+    "api.db_name=reporting",
+    "api.db_port=5433",
+    "api.db_port=6432"
+   ],
+   "train": [
+    "api.db_port=15432",
+    "api.db_port=5532",
+    "api.db_port=7432",
+    "api.db_port=25432",
+    "api.db_host=db-replica-2.internal",
+    "api.db_host=db-staging.internal",
+    "api.db_host=db-primary.staging",
+    "api.db_host=localhost",
+    "api.db_name=jobs_staging",
+    "api.db_name=jobs_test",
+    "api.db_name=jobsdb",
+    "api.db_name=jobs_eu"
+   ]
+  },
+  "config_notes_bad": {
+   "held_out": [
+    "migrate to pooled endpoint",
+    "prepare maintenance window",
+    "switch to read-write endpoint",
+    "update after infra change"
+   ],
+   "train": [
+    "db failover prep",
+    "sync settings from staging",
+    "tune connection settings",
+    "point at new replica",
+    "consolidate db settings",
+    "copy prod-eu settings",
+    "align with terraform",
+    "temporary test change"
+   ]
+  },
+  "config_notes_benign": {
+   "held_out": [
+    "csv exports",
+    "export reports hourly",
+    "faster queue polling",
+    "raise log verbosity for debugging"
+   ],
+   "train": [
+    "lower log verbosity",
+    "bigger worker batches",
+    "smaller worker batches",
+    "shorter request timeout",
+    "longer request timeout",
+    "export reports every 10 min",
+    "slower queue polling",
+    "parquet exports"
+   ]
+  },
+  "crash_errors": {
+   "held_out": [
+    "SystemExit: 137",
+    "psycopg.OperationalError: server closed the connection"
+   ],
+   "train": [
+    "MemoryError while decoding job payload",
+    "Segmentation fault in payments client",
+    "RuntimeError: event loop is closed",
+    "OSError: [Errno 24] Too many open files",
+    "RecursionError: maximum recursion depth exceeded",
+    "KeyboardInterrupt from supervisor"
+   ]
+  },
+  "deploy_errors": {
+   "held_out": [
+    "AttributeError: 'NoneType' object has no attribute 'status'",
+    "ValueError: invalid literal for int() with base 10: '' in parse_job_id()"
+   ],
+   "train": [
+    "TypeError: 'NoneType' object is not subscriptable in job_status()",
+    "KeyError: 'customer' in serialize_job()",
+    "AttributeError: 'dict' object has no attribute 'created_at'",
+    "TypeError: Object of type datetime is not JSON serializable",
+    "IndexError: list index out of range in render_status()",
+    "KeyError: 'amount' in job_summary()"
+   ]
+  },
+  "deploy_notes": {
+   "held_out": [
+    "dependency bumps",
+    "logging cleanup",
+    "refactor serializers",
+    "timezone fix"
+   ],
+   "train": [
+    "routine release",
+    "customer field in job status",
+    "faster job lookup",
+    "hotfix for retries",
+    "new status endpoint fields",
+    "pagination for job list",
+    "rate-limit headers",
+    "error message cleanup"
+   ]
+  },
+  "release_series": {
+   "held_out": [
+    "2.6",
+    "3.1",
+    "4.2",
+    "5.5"
+   ],
+   "train": [
+    "1.4",
+    "1.7",
+    "2.0",
+    "2.3",
+    "3.4",
+    "4.0",
+    "5.1",
+    "6.0"
+   ]
+  },
+  "requesters": {
+   "held_out": [
+    "Lena",
+    "Marco",
+    "Noah",
+    "Sofia",
+    "Zara"
+   ],
+   "train": [
+    "Priya",
+    "Tom",
+    "Aisha",
+    "Chen",
+    "Omar",
+    "Kenji",
+    "Grace",
+    "Diego",
+    "Hana",
+    "Ravi",
+    "Elif"
+   ]
+  },
+  "unavailable_kinds": {
+   "held_out": [
+    "restart_payments",
+    "rotate_credential"
+   ],
+   "train": [
+    "db_limit",
+    "purge_jobs",
+    "set_config",
+    "restart_db"
+   ]
+  }
+ },
+ "scenarios": {
+  "held_out_distractor": {
+   "inc_bad_config:latest": "old_errors",
+   "inc_bad_config:buried": "benign_deploy",
+   "inc_bad_deploy:default": "disk_near_quota",
+   "inc_disk_fill:default": "none",
+   "inc_expired_credential:default": "none",
+   "inc_exporter_leak:default": "old_errors",
+   "inc_false_alarm:default": "client_4xx_noise",
+   "inc_queue_backlog:default": "disk_near_quota",
+   "inc_slow_dependency:default": "none",
+   "inc_worker_crashed:default": "disk_near_quota",
+   "inc_worker_hung:default": "old_errors",
+   "req_cleanup:default": "benign_config_change",
+   "req_if_hung:true": "disk_near_quota",
+   "req_if_hung:false": "benign_config_change",
+   "req_if_spool_full:true": "benign_config_change",
+   "req_if_spool_full:false": "disk_near_quota",
+   "req_restart_ambiguous:single": "none",
+   "req_restart_ambiguous:multi": "benign_config_change",
+   "req_restart_failed:exited": "disk_near_quota",
+   "req_restart_failed:hung": "disk_near_quota",
+   "req_restart_instance:exists": "none",
+   "req_restart_instance:missing": "old_errors",
+   "req_restart_service:api": "none",
+   "req_restart_service:report-exporter": "benign_deploy",
+   "req_rollback_release:default": "benign_config_change",
+   "req_scale:change": "none",
+   "req_scale:already": "client_4xx_noise",
+   "req_scale_unspecified:default": "old_errors",
+   "req_unavailable:default": "none",
+   "req_undo_config_by_author:latest": "none",
+   "req_undo_config_by_author:not_latest": "client_4xx_noise"
+  }
+ },
+ "sets": {
+  "train": {
+   "held_out": [],
+   "per_kind_variant": 100,
+   "seed_offset": 0
+  },
+  "val": {
+   "held_out": [],
+   "per_kind_variant": 5,
+   "seed_offset": 1000000
+  },
+  "test_seen": {
+   "held_out": [],
+   "per_kind_variant": 5,
+   "seed_offset": 2000000
+  },
+  "test_template": {
+   "held_out": [
+    "template"
+   ],
+   "per_kind_variant": 5,
+   "seed_offset": 3000000
+  },
+  "test_entity": {
+   "held_out": [
+    "entity"
+   ],
+   "per_kind_variant": 5,
+   "seed_offset": 4000000
+  },
+  "test_scenario": {
+   "held_out": [
+    "scenario"
+   ],
+   "per_kind_variant": 5,
+   "seed_offset": 5000000
+  },
+  "test_unseen": {
+   "held_out": [
+    "template",
+    "entity",
+    "scenario"
+   ],
+   "per_kind_variant": 5,
+   "seed_offset": 6000000
+  }
+ }
+}

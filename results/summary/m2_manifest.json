@@ -1,0 +1,83 @@
+{
+ "generated": "2026-10-09T06:18:05+00:00",
+ "splits_sha": "c5b228f3fc10c969",
+ "sets": {
+  "train": {
+   "tasks": 3100,
+   "exact_duplicates_dropped": 0,
+   "sha256": "09f1d1fddf8e00ac4de4eba1011cf5979a2411fcd683cba34da8af8046111d46",
+   "outcomes": {
+    "resolved": 1900,
+    "escalated": 500,
+    "no_action_needed": 400,
+    "need_information": 300
+   }
+  },
+  "val": {
+   "tasks": 155,
+   "exact_duplicates_dropped": 0,
+   "sha256": "c7759754a3ebdc75b544ed70d5a8d13881e81dacf359185292414e016e18bce7",
+   "outcomes": {
+    "resolved": 95,
+    "escalated": 25,
+    "no_action_needed": 20,
+    "need_information": 15
+   }
+  },
+  "test_seen": {
+   "tasks": 155,
+   "exact_duplicates_dropped": 0,
+   "sha256": "04c76e6e3996478b13264bdc448b2b074678e0a578a84f3165856d1f08b9012a",
+   "outcomes": {
+    "resolved": 95,
+    "escalated": 25,
+    "no_action_needed": 20,
+    "need_information": 15
+   }
+  },
+  "test_template": {
+   "tasks": 155,
+   "exact_duplicates_dropped": 0,
+   "sha256": "e6e6a811cc72806c361e1db6956fb11cc301e330b80e7bceb0d2f2883db63950",
+   "outcomes": {
+    "resolved": 95,
+    "escalated": 25,
+    "no_action_needed": 20,
+    "need_information": 15
+   }
+  },
+  "test_entity": {
+   "tasks": 155,
+   "exact_duplicates_dropped": 0,
+   "sha256": "168789c242f3740d6bd192ef2c76b06eaf796147ba6e21566a9f11ff6e83bb91",
+   "outcomes": {
+    "resolved": 95,
+    "escalated": 25,
+    "no_action_needed": 20,
+    "need_information": 15
+   }
+  },
+  "test_scenario": {
+   "tasks": 155,
+   "exact_duplicates_dropped": 0,
+   "sha256": "d154a07bf64bf05297eb6f1b9e9f9c4c20a66813d68e0a0a777dda82e608582a",
+   "outcomes": {
+    "resolved": 95,
+    "escalated": 25,
+    "no_action_needed": 20,
+    "need_information": 15
+   }
+  },
+  "test_unseen": {
+   "tasks": 155,
+   "exact_duplicates_dropped": 0,
+   "sha256": "5ca4cd966c7228242aefb0b13b9d3a201047f16db5e65e5d59f554acafc13cea",
+   "outcomes": {
+    "resolved": 95,
+    "escalated": 25,
+    "no_action_needed": 20,
+    "need_information": 15
+   }
+  }
+ }
+}
