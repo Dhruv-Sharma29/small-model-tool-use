@@ -5,9 +5,11 @@ tool-use task, approach a larger general model's success rate, at lower latency 
 is scored by **executing** the model's tool calls in a sandbox and checking the resulting state, not
 by trusting what the model says it did.
 
-> **Status:** milestones 1 (task definition) and 2 (leak-resistant splits) are complete: tools,
-> generator, sandbox model, scorer, frozen splits and an overlap audit, all tested. No model has been
-> evaluated yet. Next: baselines with the local model server from `01-llm-inference-lab` (M3).
+> **Status (2026-10-23):** M1–M3 are complete. On test_unseen: base 7B 44%, 7B with an improved
+> prompt 58%, base 14B 63%, 14B with the improved prompt 73% (`results/summary/m3.md`). M4's two
+> LoRA pilots are done: the first exposed an answer leak in the gold trajectories, and the second
+> (runbook trajectories, no leak) scored 57% on val (`results/summary/m4-pilot.md`). M5 data
+> scaling is running. Current detail: [docs/README.md#status](docs/README.md#status).
 
 ## Research question
 
@@ -74,7 +76,7 @@ held-out episodes per condition and seed. The cost is realism, so M5 adds a tran
 
 Split definitions were frozen **before any task was generated** (`tasks/splits/splits.json`).
 Three factors are held out: 2 of the 8 phrasing frames in every family, about 30% of every entity
-pool, and one distractor per kind-variant. Details: [dataset card](docs/dataset_card.md).
+pool, and one distractor per kind-variant. Details: [dataset card](docs/03-dataset-card.md).
 
 | Set | Held out | Tasks | Same prompt + actions as a train task | Prompt-lookup ceiling |
 | --- | --- | --- | --- | --- |
@@ -110,7 +112,7 @@ flowchart LR
     EX --> SC[Scorer: resulting state<br/>vs success condition]
 ```
 
-More detail: [docs/architecture.md](docs/architecture.md).
+More detail: [docs/01-architecture.md](docs/01-architecture.md).
 
 ## Quick start
 
@@ -128,7 +130,7 @@ uv run python -m tasks.generator.generate --catalog .run/catalog.jsonl   # one t
 | From | What |
 | --- | --- |
 | `02-reliable-operations-agent` | Tool names, scopes and schemas; incident kinds and action semantics (modelled in `executor/sandbox.py`); its 30 live incidents for the M5 transfer check |
-| `01-llm-inference-lab` | OpenAI-compatible gateway in front of vLLM, and a benchmark harness for latency and memory |
+| `01-llm-inference-lab` | The pinned llama.cpp build (b11439) and its converter, used to serve every condition, and a benchmark harness for latency and memory |
 
 ## Planned evaluation
 
@@ -143,6 +145,27 @@ uv run python -m tasks.generator.generate --catalog .run/catalog.jsonl   # one t
 
 See [PLAN.md](PLAN.md): task definition → leak-resistant splits → baselines → pilot fine-tune → full
 comparison → ablations. Brief: [SPEC.md](SPEC.md).
+
+## Docs
+
+The design record is in [docs/](docs/README.md), written to be read in order. **Current status, with
+results through M4, is in [docs/README.md § Status](docs/README.md#status)**; the status note at the
+top of this README dates from M2.
+
+| # | Doc | What it settles |
+| --- | --- | --- |
+| 00 | [Charter](docs/00-charter.md) | The question, scope, non-goals, success criteria |
+| 01 | [Architecture](docs/01-architecture.md) | The pipeline, its three rules, components, layout |
+| 02 | [Tasks and scoring](docs/02-tasks-and-scoring.md) | Tools, simulated sandbox, task kinds, state-based scorer |
+| 03 | [Dataset card](docs/03-dataset-card.md) | Generation, leak-resistant splits, overlap audit, weaknesses |
+| 04 | [Fine-tuning](docs/04-fine-tuning.md) | Training data, LoRA setup, export, reload check, the two pilots |
+| 05 | [Evaluation](docs/05-evaluation.md) | Conditions, metrics, statistics, results so far |
+| 06 | [Roadmap](docs/06-roadmap.md) | Milestones, acceptance criteria, what is next |
+| 07 | [Risks](docs/07-risks.md) | Thesis and delivery risks, claim hygiene |
+| 08 | [Learning checklist](docs/08-learning-checklist.md) | Skills per milestone, interview talking points |
+| 09 | [Implementation notes](docs/09-implementation-notes.md) | Where the build departs from the plan, and why |
+
+To run things: [start.md](start.md) (CPU only) and [RUNBOOK.md](RUNBOOK.md) (GPU steps).
 
 ## What still needs the GPU
 

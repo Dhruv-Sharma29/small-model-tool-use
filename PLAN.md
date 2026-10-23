@@ -11,10 +11,11 @@ Brief: [SPEC.md](SPEC.md). This is an **experimental study**. The research quest
 | Milestone | State |
 | --- | --- |
 | M1 task definition | **Done.** 11 tools (5 read, 5 action, `finish`), 22 task kinds / 31 kind-variants x 6 distractors = 186 scenarios. Reference 100%, observation-only runbook 100%, best trivial strategy 16.1% (`results/summary/m1.md`). 2,465 tests; each scorer check shown load-bearing by mutation |
-| M2 leak-resistant splits | **Done.** Splits frozen before generation (template frames, ~30% of entities, 1 distractor per kind-variant); 3,100 train + 6 x 155 eval tasks, rebuilt byte for byte. Audit: 0 factor leakage; test_unseen shares no example with train. Seen-template sets reward memorisation (lookup ceiling 37–40%), so test_unseen is primary (`results/summary/m2_audit.md`, `docs/dataset_card.md`) |
+| M2 leak-resistant splits | **Done.** Splits frozen before generation (template frames, ~30% of entities, 1 distractor per kind-variant); 3,100 train + 6 x 155 eval tasks, rebuilt byte for byte. Audit: 0 factor leakage; test_unseen shares no example with train. Seen-template sets reward memorisation (lookup ceiling 37–40%), so test_unseen is primary (`results/summary/m2_audit.md`, `docs/03-dataset-card.md`) |
 | M3 baselines | **Done.** test_unseen: base 7B 44%, improved prompt (v2) 58%, base 14B 63%, 14B + v2 prompt 73%. 7B + v2 vs base 14B not distinguishable (23 vs 15 tasks, p = 0.26). 7B on all six sets, 14B on val + test_unseen (`results/summary/m3.md`) |
 | M4 pilot fine-tune | **In progress.** Pilot (310 gold trajectories, 39 steps, peak 19.7 GiB): val 62% (Q4) / 64% (f16), equal to the v2 prompt overall; incidents up, requests down. Cause: gold trajectories leak the answer through the first call. Second pilot on runbook trajectories (no leak): val 57%, incidents 18/55, unallowed effects 2 (was 32); it follows the runbook's call order but takes the majority branch instead of reading the tool result. Next: more runbook data (`results/summary/m4-pilot.md`) |
-| M5–M6 | Not started (need the GPU) |
+| M5 full comparison | **Started 2026-10-23.** Training on 1,240 runbook trajectories (4x the pilot, other settings unchanged); results pending |
+| M6 ablations | Not started; the 310 / 1,240 runs are the first points of the data-quantity ablation |
 
 ### Decisions and deviations
 
@@ -103,7 +104,7 @@ Brief: [SPEC.md](SPEC.md). This is an **experimental study**. The research quest
 ### M2 — Leak-resistant splits (½–1 week)
 - [x] Split by **template**, **entity**, and **scenario** before generating any example (`tasks/splits/splits.json`, written by `make_splits.py`, refuses to overwrite).
 - [x] Dedup (exact + near-duplicate, e.g. normalized text / n-gram overlap); write an overlap audit report (`eval/m2_audit.py` → `results/summary/m2_audit.md`; exact duplicates dropped at build: 0).
-- [x] If any teacher model is used: record licence/terms + provenance; teacher never sees held-out tasks. Prefer the deterministic generator. (No teacher: deterministic generator only; `docs/dataset_card.md`.)
+- [x] If any teacher model is used: record licence/terms + provenance; teacher never sees held-out tasks. Prefer the deterministic generator. (No teacher: deterministic generator only; `docs/03-dataset-card.md`.)
 
 ### M3 — Baselines (1 week)
 - [x] Base model, zero-shot (`base` prompt).
@@ -136,4 +137,4 @@ Task completion (state-verified) · tool-selection accuracy · argument validity
 - Training-stack support on GB10/arm64 — follow NVIDIA's Spark fine-tuning recipe; quantized training only if verified.
 
 ## Definition of done
-- [ ] Baselines · [ ] ≥1 controlled ablation · [ ] held-out results with variance · [ ] failure analysis · [ ] dataset card (done: `docs/dataset_card.md`) + adapter card · [ ] write-up (negative result acceptable)
+- [ ] Baselines · [ ] ≥1 controlled ablation · [ ] held-out results with variance · [ ] failure analysis · [ ] dataset card (done: `docs/03-dataset-card.md`) + adapter card · [ ] write-up (negative result acceptable)
