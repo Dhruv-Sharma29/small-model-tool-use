@@ -137,4 +137,4 @@ Task completion (state-verified) · tool-selection accuracy · argument validity
 - Training-stack support on GB10/arm64 — follow NVIDIA's Spark fine-tuning recipe; quantized training only if verified.
 
 ## Definition of done
-- [x] Baselines · [x] ≥1 controlled ablation · [ ] held-out results with variance · [x] failure analysis · [x] dataset card (`docs/03-dataset-card.md`) + adapter card (`docs/10-adapter-card.md`) · [ ] write-up (negative result acceptable)
+- [x] Baselines · [x] ≥1 controlled ablation · [ ] held-out results with variance · [x] failure analysis · [x] dataset card (`docs/03-dataset-card.md`) + adapter card (`docs/10-adapter-card.md`) · [x] write-up (`docs/11-write-up.md`) (negative result acceptable)

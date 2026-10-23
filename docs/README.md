@@ -23,6 +23,7 @@ for the steps that need the GPU, see [RUNBOOK.md](../RUNBOOK.md).
 | 08 | [Learning checklist](08-learning-checklist.md) | Skills per milestone, and interview talking points mapped to the code |
 | 09 | [Implementation notes](09-implementation-notes.md) | Where the build departs from the plan, and why |
 | 10 | [Adapter card](10-adapter-card.md) | The M5 checkpoint: base, licence, data, training, results, limits |
+| 11 | [Write-up](11-write-up.md) | The study's answer, what made it work, where it fails, threats to validity |
 
 ## The one-paragraph version
 
@@ -64,7 +65,7 @@ interface (`results/summary/m5-transfer.md`).
 - **Latency and memory:** against the 14B with the improved prompt, the tuned 7B is about 5x faster per episode at the
 median (3.3 vs 16.2 s), 9x at p95 (4.0 vs 36.6 s) and needs 2.3x less GPU memory (6.3 vs 14.6 GB),
 measured one model at a time on an otherwise idle GPU (`results/summary/latency.md`).
-- **Not done yet:** seed spread (two more training seeds running), further ablations and the write-up.
+- **Write-up:** [11](11-write-up.md). **Not done yet:** seed spread (two more training seeds running).
 
 The research question has a first answer on accuracy: in this simulated setting a tuned 7B beats
 both better prompting and a 2x larger model, at a fifth of the 14B's latency and less than half its
