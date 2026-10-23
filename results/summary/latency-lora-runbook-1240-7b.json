@@ -1,0 +1,24 @@
+{
+ "alias": "lora-runbook-1240-7b",
+ "gguf": "models/qwen2.5-7b-lora-runbook-1240-Q4_K_M.gguf",
+ "started": "2026-10-23T17:21:14+00:00",
+ "tasks": 40,
+ "gpu_others_at_start": [],
+ "shared_gpu": false,
+ "success": 26,
+ "raw": "results/raw/20261023T172114Z-latency-lora-runbook-1240-7b-val.jsonl",
+ "call_latency_s": {
+  "p50": 0.55,
+  "p95": 0.79,
+  "calls": 202
+ },
+ "episode_wall_s": {
+  "p50": 3.27,
+  "p95": 3.99
+ },
+ "prompt_tokens_mean": 1714.8,
+ "completion_tokens_mean": 21.5,
+ "prefill_tokens_per_s_median": 1924.3,
+ "decode_tokens_per_s_median": 42.7,
+ "server_gpu_peak_mib": 6314
+}

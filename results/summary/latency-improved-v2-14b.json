@@ -1,0 +1,24 @@
+{
+ "alias": "improved-v2-14b",
+ "gguf": "models/qwen2.5-14b-instruct-cf98f3b-Q4_K_M.gguf",
+ "started": "2026-10-23T17:27:42+00:00",
+ "tasks": 40,
+ "gpu_others_at_start": [],
+ "shared_gpu": false,
+ "success": 33,
+ "raw": "results/raw/20261023T172742Z-latency-improved-v2-14b-val.jsonl",
+ "call_latency_s": {
+  "p50": 1.75,
+  "p95": 6.76,
+  "calls": 284
+ },
+ "episode_wall_s": {
+  "p50": 16.22,
+  "p95": 36.55
+ },
+ "prompt_tokens_mean": 2644.7,
+ "completion_tokens_mean": 49.9,
+ "prefill_tokens_per_s_median": 1050.4,
+ "decode_tokens_per_s_median": 21.3,
+ "server_gpu_peak_mib": 14628
+}

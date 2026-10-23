@@ -1,0 +1,24 @@
+{
+ "alias": "improved-v2-7b",
+ "gguf": "../01-llm-inference-lab/models/qwen2.5-7b-instruct-a09a354-Q4_K_M.gguf",
+ "started": "2026-10-23T17:23:41+00:00",
+ "tasks": 40,
+ "gpu_others_at_start": [],
+ "shared_gpu": false,
+ "success": 21,
+ "raw": "results/raw/20261023T172341Z-latency-improved-v2-7b-val.jsonl",
+ "call_latency_s": {
+  "p50": 0.53,
+  "p95": 3.04,
+  "calls": 248
+ },
+ "episode_wall_s": {
+  "p50": 4.34,
+  "p95": 10.55
+ },
+ "prompt_tokens_mean": 2587.7,
+ "completion_tokens_mean": 30.2,
+ "prefill_tokens_per_s_median": 2164.5,
+ "decode_tokens_per_s_median": 42.2,
+ "server_gpu_peak_mib": 6314
+}
