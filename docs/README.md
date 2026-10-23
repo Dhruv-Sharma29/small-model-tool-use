@@ -39,7 +39,7 @@ cannot come from memorised prompts, leaked answers or serving noise.
 
 ## Status
 
-**As of 2026-10-23: M1–M4 done; M5 has its main result, with seed spread and the transfer check still running; M6 has its required ablation.**
+**As of 2026-10-23: M1–M4 done; M5 has its main result and its transfer check, with seed spread still running; M6 has its required ablation.**
 
 - **M1 task definition, M2 leak-resistant splits:** done and tested (2,476 tests pass with
   `pytest -q` on CPU).
@@ -55,11 +55,14 @@ cannot come from memorised prompts, leaked answers or serving noise.
   ahead of every baseline including the 14B with the improved prompt (73%; 10 vs 27 discordant
   tasks, p = 0.0076). Per factor 84–90%. No general-capability regression on project 01's 60
   held-out prompts (59/60 base and tuned) (`results/summary/m5-analysis.md`, `m5.md`).
+- **M5 transfer check:** in 02's own live harness, with 02's tools and prompt and only the weights changed, the tuned 7B
+scored 12/30 against the base model's 16/30 (p = 0.42): the gain does not carry over to another tool
+interface (`results/summary/m5-transfer.md`).
 - **M6, data quantity:** 310 runbook examples give 49% on test_unseen, not distinguishable from
   the untuned 44% (p = 0.36) though with 9 unallowed effects instead of 77; 1,240 give 84% (5 vs 59
   discordant against 310) (`results/summary/m6-data-quantity.md`).
 - **Not done yet:** seed spread, the controlled latency and memory benchmark (needs the GPU to
-  itself), the transfer check on project 02's live incidents (running), further ablations and the write-up.
+  itself), further ablations and the write-up.
 
 The research question has a first answer on accuracy: in this simulated setting a tuned 7B beats
 both better prompting and a 2x larger model. Seed spread and the latency/memory cost are still owed. See [06](06-roadmap.md) for what comes next and

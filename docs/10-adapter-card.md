@@ -51,8 +51,10 @@ model, and never answers a plain prompt with a tool call.
 
 - **For the study only.** It demonstrates that a small model tuned on procedure traces can beat a
   larger prompted model on this task. It is not an operations agent to deploy.
-- **Simulated environment.** The sandbox is a deterministic model of project 02's services;
-  transfer to the live processes is a separate check ([06](06-roadmap.md)).
+- **Tied to its tool interface.** In project 02's own live harness, which has different tools
+  (separate metric tools, a runbook tool, `submit_diagnosis`) and prompt for the same services, it
+  scored 12/30 against the base model's 16/30 (p = 0.42; `results/summary/m5-transfer.md`). Use it
+  only with the interface it was trained on.
 - **Known failure points** (val): telling a bad config from a bad deploy, escalating when the bad
   change is not the latest version, reading queue growth, and threshold comparisons on heartbeat
   age (`results/summary/m5-analysis.md`).

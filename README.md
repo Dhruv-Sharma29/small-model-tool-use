@@ -11,7 +11,9 @@ by trusting what the model says it did.
 > (runbook trajectories, no leak) scored 57% on val (`results/summary/m4-pilot.md`). **M5: with
 > 1,240 runbook trajectories the tuned 7B scores 84% on test_unseen**, ahead of the 14B with the
 > improved prompt (73%, p = 0.0076), with no general-capability regression
-> (`results/summary/m5-analysis.md`). One seed so far. Detail: [docs/README.md#status](docs/README.md#status).
+> (`results/summary/m5-analysis.md`). One seed so far. The gain is tied to the trained tool
+> interface: in project 02's live harness, with its own tools, the tuned model scored 12/30 vs the
+> base model's 16/30 (`results/summary/m5-transfer.md`). Detail: [docs/README.md#status](docs/README.md#status).
 
 ## Research question
 

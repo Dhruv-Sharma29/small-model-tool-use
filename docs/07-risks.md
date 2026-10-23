@@ -14,7 +14,7 @@ tuned model can score by recognising a prompt rather than reading the system.
 
 **Detection:** the prompt-lookup ceiling per set (37–40% on seen-template sets, 0% on test_template
 and test_unseen, `results/summary/m2_audit.md`); the gap between test_seen and test_unseen for the
-tuned model (M5); the transfer check on 02's live incidents (M5, not built).
+tuned model (M5); the transfer check on 02's live incidents (M5: done, and the gain did not transfer).
 
 **Mitigation:** splits fixed before generation, test_unseen holding out template, entity and scenario
 at once, reported first; `tests/test_splits.py` fails on any factor leak.
@@ -64,8 +64,9 @@ seeds for training spread. Pilot 2 vs pilot 1 (89 vs 96, p = 0.41) is reported a
 
 Results describe models on a deterministic model of 02's sandbox, not live incident response.
 
-**Mitigation:** say so in every claim; the transfer check on 02's 30 live incidents gives one point of
-contact with real processes.
+**Mitigation:** say so in every claim. The transfer check gave one point of contact with real
+processes, and it went against the tuned model: in 02's own harness (different tools and prompt) it
+scored 12/30 vs the base model's 16/30 (p = 0.42).
 
 ### R7 — Strictness penalises models unevenly *(medium)*
 
@@ -116,7 +117,7 @@ points anyway ([06](06-roadmap.md) § Cut line).
 | "The 7B matches the 14B" | "With the improved prompt, the 7B is not distinguishable from the unprompted 14B on test_unseen (90 vs 98/155, p = 0.26); the prompted 14B is ahead (113/155)" |
 | "62% accuracy" | "96/155 on val, 95% CI 0.54–0.69" |
 | "Deterministic evaluation" | "Deterministic sandbox and scoring; temperature-0 serving with 4 slots flips about 4 of 155 tasks between runs" |
-| "Tested on real incidents" | "Tested on a deterministic model of project 02's sandbox; the live transfer check is planned" |
+| "Tested on real incidents" | "Tested on a deterministic model of project 02's sandbox; on 02's live harness, with its own tools, the gain did not transfer (12/30 vs 16/30)" |
 | "Faster and smaller" | Nothing yet: latency and memory are not measured |
 | "No leakage" | "No held-out template, entity or scenario combination occurs in train (tested); seen-template sets still allow 37–40% by prompt lookup, so test_unseen is primary" |
 

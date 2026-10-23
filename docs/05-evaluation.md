@@ -129,6 +129,18 @@ General capability on project 01's 60 held-out prompts: 59/60 for base and tuned
 replies to plain prompts. The checkpoint's recipe was fixed before any of these numbers were seen
 (4x the second pilot's data, nothing else changed).
 
+### M5 transfer check: project 02's live incidents (`results/summary/m5-transfer.md`)
+
+| Model, in 02's harness with 02's tools and prompt | Success | Diagnosis "unknown" | `search_logs` calls |
+| --- | --- | --- | --- |
+| base 7B | 16/30 | 3 | 37 |
+| tuned 7B (M5) | 12/30 | 10 | 1 |
+
+Paired: 9 vs 5 cases, p = 0.42. The tuned model kept its learned procedure (it opened with
+`service_status` in all 30 cases) but not the judgement behind it: 02's diagnoses must cite
+evidence, much of it in logs, which 04's procedure rarely needs. The 84% on test_unseen is a result
+for the interface it was trained on.
+
 ### M6: data quantity (`results/summary/m6-data-quantity.md`)
 
 | Runbook training examples (seed 0, all else equal) | test_unseen | Unallowed effects | Paired |
@@ -172,5 +184,4 @@ numbers so far are training ones: peak 19.7 GiB allocated for the pilot.
 | Item | Why it matters | Plan |
 | --- | --- | --- |
 | Repeated seeds | Spread across training runs, not just serving | M5 (running) |
-| Transfer check on 02's 30 live incidents | The only check against real processes; 02 reports 15/30 for its simple agent (`02-reliable-operations-agent/results/summary/m5-comparison.md`) | M5 |
 | Controlled latency/memory benchmark | The cost half of the question | M5, one model at a time |
