@@ -73,3 +73,32 @@ failures restart a worker that doesn't exist, then finish with the "There is no 
 Fix: `train/build_sft.py --policy runbook` builds the same tasks from the observation-only runbook
 (one decision tree per family; 0 of 18 groups leak; `tests/test_sft_policy.py`). Same 310 tasks:
 1,020 assistant turns (gold 900), 531,644 tokens (gold 519,186), sha b7ba3fb3d20a.
+
+## Second pilot: same 310 tasks, runbook trajectories
+
+Adapter `.run/adapters/pilot-runbook`, identical hyperparameters; only the data changed
+(`.run/sft/pilot-runbook.jsonl`). 39 steps, final loss 0.029, peak 19.6 GiB; 1 h 45 min, early steps ran up to 2x
+slower than the first pilot while another user's jobs shared the GPU. Q4_K_M sha a30f9975446d.
+Raw: `results/raw/20261023T064426Z-lora-pilot-runbook-7b-val.jsonl`.
+
+| Condition | Set | Success | 95% CI | Incidents | Requests | Invalid calls | Tool selection ok | Unallowed effects | Mean steps |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| improved-v2-7b | val | 96/155 (62%) | 0.54–0.69 | 23/55 | 73/100 | 4.8% | 57% | 51 | 4.19 |
+| lora-pilot-7b | val | 96/155 (62%) | 0.54–0.69 | 30/55 | 66/100 | 0.0% | 64% | 32 | 3.13 |
+| lora-pilot-runbook-7b | val | 89/155 (57%) | 0.49–0.65 | 18/55 | 71/100 | 0.0% | 65% | 2 | 3.1 |
+
+Paired against the first pilot: 30 vs 23 tasks, p = 0.41 (exact McNemar); not a difference on 155 tasks.
+
+The leak is gone and so is the shortcut: unallowed effects fall from 32 to 2, false alarms 5/5
+(first pilot 1/5), req_restart_instance 7/10 (5/10). But the model now follows the runbook's call
+order without reading the decisive observation. On the 10 crashed/hung-worker incidents it calls
+service_status first, as the runbook does, and never restarts (0/10): it continues down the
+"nothing found" branch and finishes `no_action_needed`. That is the majority continuation in its data
+(after service_status: get_metrics 90, restart_service 20 of 110 incident examples). 38 of its 66
+failures finish `no_action_needed` where an action was needed.
+
+Reading: at 10 examples per kind-variant and 39 steps, the model learns the trajectory shape and the
+most common branch, not the conditional on the tool result. Part of the first pilot's incident gain
+is consistent with the shortcut it could take (it rose on the kinds the leak covers). Next: one
+factor at a time, more runbook data first (planned M5 scaling; the 310-task run becomes the
+smallest point of the data-quantity ablation).

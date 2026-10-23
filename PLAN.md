@@ -13,7 +13,7 @@ Brief: [SPEC.md](SPEC.md). This is an **experimental study**. The research quest
 | M1 task definition | **Done.** 11 tools (5 read, 5 action, `finish`), 22 task kinds / 31 kind-variants x 6 distractors = 186 scenarios. Reference 100%, observation-only runbook 100%, best trivial strategy 16.1% (`results/summary/m1.md`). 2,465 tests; each scorer check shown load-bearing by mutation |
 | M2 leak-resistant splits | **Done.** Splits frozen before generation (template frames, ~30% of entities, 1 distractor per kind-variant); 3,100 train + 6 x 155 eval tasks, rebuilt byte for byte. Audit: 0 factor leakage; test_unseen shares no example with train. Seen-template sets reward memorisation (lookup ceiling 37–40%), so test_unseen is primary (`results/summary/m2_audit.md`, `docs/dataset_card.md`) |
 | M3 baselines | **Done.** test_unseen: base 7B 44%, improved prompt (v2) 58%, base 14B 63%, 14B + v2 prompt 73%. 7B + v2 vs base 14B not distinguishable (23 vs 15 tasks, p = 0.26). 7B on all six sets, 14B on val + test_unseen (`results/summary/m3.md`) |
-| M4 pilot fine-tune | **In progress.** Pilot (310 gold trajectories, 39 steps, peak 19.7 GiB): val 62% (Q4) / 64% (f16), equal to the v2 prompt overall; incidents up, requests down. Cause: gold trajectories leak the answer through the first call. Rebuilt data from the runbook policy; second pilot not trained yet (`results/summary/m4-pilot.md`) |
+| M4 pilot fine-tune | **In progress.** Pilot (310 gold trajectories, 39 steps, peak 19.7 GiB): val 62% (Q4) / 64% (f16), equal to the v2 prompt overall; incidents up, requests down. Cause: gold trajectories leak the answer through the first call. Second pilot on runbook trajectories (no leak): val 57%, incidents 18/55, unallowed effects 2 (was 32); it follows the runbook's call order but takes the majority branch instead of reading the tool result. Next: more runbook data (`results/summary/m4-pilot.md`) |
 | M5–M6 | Not started (need the GPU) |
 
 ### Decisions and deviations
@@ -65,6 +65,9 @@ Brief: [SPEC.md](SPEC.md). This is an **experimental study**. The research quest
   result ("Scale workers to 1." → service_status → "There are already 4 workers"). The runbook is
   one observation-driven tree per family (0 groups leak, `tests/test_sft_policy.py`). Diagnosed on
   val; no test set has seen a tuned model. Gold stays the default so the pilot's data rebuilds byte for byte.
+  Second pilot (2026-10-23): no shortcut left, but at 310 examples the model takes the majority
+  branch (service_status → more reads in 90/110 incident examples) and never restarts a broken worker
+  on val (0/10). Next factor to change: data quantity, keeping the runbook source.
 - **Runbook policy gets the request's meaning, not its answer.** For requests it receives kind +
   slots (what the text says); conditions, existence and "is this the latest change" come from tools.
   For incidents it gets nothing but tool output.
@@ -108,7 +111,7 @@ Brief: [SPEC.md](SPEC.md). This is an **experimental study**. The research quest
 - [ ] Stop the 01 server and other heavy processes first.
 - [x] Small subset, LoRA, modest seq length. Record peak memory and step time (310 examples, r16, 19.7 GiB peak, ~105 s/step).
 - [ ] Save adapter → reload into serving stack → reproduce the evaluated scores exactly. Export reproduces the GGUF hash; the score rerun is still owed.
-- [ ] Second pilot on runbook trajectories (`.run/sft/pilot-runbook.jsonl`), val only, before scaling data.
+- [x] Second pilot on runbook trajectories (`.run/sft/pilot-runbook.jsonl`), val only: 89/155; leak gone, observation reading not learned at 310 examples.
 
 ### M5 — Full comparison (1–2 weeks)
 - [ ] Scale data (hundreds → thousands only once generator/scorer are trusted).
