@@ -38,7 +38,7 @@ cannot come from memorised prompts, leaked answers or serving noise.
 
 ## Status
 
-**As of 2026-10-23: M1–M3 done, M4 pilots done on val, M5 in progress, M6 not started.**
+**As of 2026-10-23: M1–M4 done; M5 has its main result, with seed spread and the transfer check still running; M6 not started.**
 
 - **M1 task definition, M2 leak-resistant splits:** done and tested (2,476 tests pass with
   `pytest -q` on CPU).
@@ -50,13 +50,16 @@ cannot come from memorised prompts, leaked answers or serving noise.
   to the improved prompt, but through a leak. Runbook trajectories: 89/155, leak gone, observation
   reading not learned. The adapter reload check passed: re-export gives a byte-identical GGUF, and
   4-slot serving is not deterministic at temperature 0 (`results/summary/m4-pilot.md`).
-- **M5 scaling started 2026-10-23, results pending:** a LoRA run on 1,240 runbook trajectories
-  (40 per kind-variant), with export and evaluation to follow.
-- **Not done:** any test-set result for a tuned model, repeated seeds, the controlled latency and
-  memory benchmark, the general-capability check, the transfer check on project 02's live
-  incidents, M6 ablations, the adapter card and the write-up.
+- **M5, one seed:** LoRA on 1,240 runbook trajectories scores **130/155 (84%) on test_unseen**,
+  ahead of every baseline including the 14B with the improved prompt (73%; 10 vs 27 discordant
+  tasks, p = 0.0076). Per factor 84–90%. No general-capability regression on project 01's 60
+  held-out prompts (59/60 base and tuned) (`results/summary/m5-analysis.md`, `m5.md`).
+- **Not done yet:** seed spread, the controlled latency and memory benchmark (needs the GPU to
+  itself), the transfer check on project 02's live incidents (running), M6 ablations, the adapter
+  card and the write-up.
 
-The research question is **not answered yet**. See [06](06-roadmap.md) for what comes next and
+The research question has a first answer on accuracy: in this simulated setting a tuned 7B beats
+both better prompting and a 2x larger model. Seed spread and the latency/memory cost are still owed. See [06](06-roadmap.md) for what comes next and
 [09](09-implementation-notes.md) for the places where building it changed the plan.
 
 ## Conventions used in these docs

@@ -8,8 +8,10 @@ by trusting what the model says it did.
 > **Status (2026-10-23):** M1–M3 are complete. On test_unseen: base 7B 44%, 7B with an improved
 > prompt 58%, base 14B 63%, 14B with the improved prompt 73% (`results/summary/m3.md`). M4's two
 > LoRA pilots are done: the first exposed an answer leak in the gold trajectories, and the second
-> (runbook trajectories, no leak) scored 57% on val (`results/summary/m4-pilot.md`). M5 data
-> scaling is running. Current detail: [docs/README.md#status](docs/README.md#status).
+> (runbook trajectories, no leak) scored 57% on val (`results/summary/m4-pilot.md`). **M5: with
+> 1,240 runbook trajectories the tuned 7B scores 84% on test_unseen**, ahead of the 14B with the
+> improved prompt (73%, p = 0.0076), with no general-capability regression
+> (`results/summary/m5-analysis.md`). One seed so far. Detail: [docs/README.md#status](docs/README.md#status).
 
 ## Research question
 

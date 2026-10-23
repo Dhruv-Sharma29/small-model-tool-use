@@ -11,7 +11,7 @@ acceptance view: what each milestone must show, what closed it, and what is next
 | M2 Leak-resistant splits | **Done** | 0 factor leakage, test_unseen shares no example with train ([03](03-dataset-card.md)) |
 | M3 Baselines | **Done** | `results/summary/m3.md` ([05](05-evaluation.md)) |
 | M4 Pilot fine-tune | **Pilots done, val only** | Two 310-example pilots, reload check passed ([04](04-fine-tuning.md)) |
-| M5 Full comparison | **In progress: scaling started 2026-10-23, results pending** | LoRA on 1,240 runbook trajectories (40 per kind-variant, `.run/adapters/runbook-1240`), then export and evaluation |
+| M5 Full comparison | **Main result in (one seed): test_unseen 130/155 (84%)**; seeds, latency, transfer pending | LoRA on 1,240 runbook trajectories (40 per kind-variant, `.run/adapters/runbook-1240`), then export and evaluation |
 | M6 Ablations | Not started | Needs M5 |
 
 ## What changed from the original plan, and why
@@ -60,7 +60,12 @@ adapter reproduces its evaluated scores.
 - [ ] PLAN.md's "stop the 01 server and other heavy processes first" is still unticked there; the
       pilots ran on a GPU shared with other users ([07](07-risks.md) § R9).
 
-## M5 — Full comparison (in progress; see the table above)
+## M5 — Full comparison (main result in; see the table above)
+
+Done on 2026-10-23: the 1,240-example checkpoint on all six held-out sets with paired tests against
+`improved-v2-7b` and `improved-v2-14b`, a failure analysis by kind and failed check, and the
+general-capability check (`results/summary/m5-analysis.md`). Still owed: training-seed spread, the
+latency/memory benchmark and the transfer check.
 
 **MUST:**
 - Scale runbook data from the pilot's 310 examples (first step: 1,240). Scale

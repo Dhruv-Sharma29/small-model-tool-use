@@ -113,6 +113,22 @@ lora-pilot-7b 96/155, lora-pilot-7b-f16 99/155, lora-pilot-runbook-7b 89/155, ag
 96/155 and base-14b 100/155 on the same set. Analysis in [04](04-fine-tuning.md). Two caveats make
 these weaker than they look: val chose the improved prompt, and val diagnosed the pilots.
 
+### M5: LoRA on 1,240 runbook trajectories, one seed (`results/summary/m5-analysis.md`, `m5.md`)
+
+| Condition | test_unseen | 95% CI | vs tuned 7B (only other / only tuned, exact McNemar) |
+| --- | --- | --- | --- |
+| base-7b | 68/155 (44%) | 0.36–0.52 | 5 / 67, p < 0.001 |
+| improved-v2-7b | 90/155 (58%) | 0.50–0.66 | 10 / 50, p < 0.001 |
+| base-14b | 98/155 (63%) | 0.55–0.70 | 13 / 45, p < 0.001 |
+| improved-v2-14b | 113/155 (73%) | 0.65–0.79 | 10 / 27, p = 0.0076 |
+| **lora-runbook-1240-7b** | **130/155 (84%)** | 0.77–0.89 | — |
+
+Per factor: test_template 88%, test_entity 86%, test_scenario 84%, test_seen 90%; the 6-point
+seen-to-unseen gap is far above the 37–40% lookup ceiling, so this is not prompt memorisation.
+General capability on project 01's 60 held-out prompts: 59/60 for base and tuned, 0 tool-call
+replies to plain prompts. The checkpoint's recipe was fixed before any of these numbers were seen
+(4x the second pilot's data, nothing else changed).
+
 ### A failure pattern worth knowing: text-written calls
 
 The 14B sometimes writes `finish({...})` as text instead of a tool call. Under the strict format that
@@ -147,9 +163,7 @@ numbers so far are training ones: peak 19.7 GiB allocated for the pilot.
 
 | Item | Why it matters | Plan |
 | --- | --- | --- |
-| LoRA on the test sets | The research question | M5, once a val result justifies it |
-| Repeated seeds | Spread across training runs, not just serving | M5 |
-| General-capability set | Specialisation may cost general ability (SPEC.md) | M5 |
+| Repeated seeds | Spread across training runs, not just serving | M5 (running) |
 | Transfer check on 02's 30 live incidents | The only check against real processes; 02 reports 15/30 for its simple agent (`02-reliable-operations-agent/results/summary/m5-comparison.md`) | M5 |
 | Controlled latency/memory benchmark | The cost half of the question | M5, one model at a time |
 | Ablation (one factor) | SPEC.md definition of done | M6 |

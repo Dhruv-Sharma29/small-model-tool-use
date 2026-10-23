@@ -13,8 +13,8 @@ Brief: [SPEC.md](SPEC.md). This is an **experimental study**. The research quest
 | M1 task definition | **Done.** 11 tools (5 read, 5 action, `finish`), 22 task kinds / 31 kind-variants x 6 distractors = 186 scenarios. Reference 100%, observation-only runbook 100%, best trivial strategy 16.1% (`results/summary/m1.md`). 2,465 tests; each scorer check shown load-bearing by mutation |
 | M2 leak-resistant splits | **Done.** Splits frozen before generation (template frames, ~30% of entities, 1 distractor per kind-variant); 3,100 train + 6 x 155 eval tasks, rebuilt byte for byte. Audit: 0 factor leakage; test_unseen shares no example with train. Seen-template sets reward memorisation (lookup ceiling 37–40%), so test_unseen is primary (`results/summary/m2_audit.md`, `docs/03-dataset-card.md`) |
 | M3 baselines | **Done.** test_unseen: base 7B 44%, improved prompt (v2) 58%, base 14B 63%, 14B + v2 prompt 73%. 7B + v2 vs base 14B not distinguishable (23 vs 15 tasks, p = 0.26). 7B on all six sets, 14B on val + test_unseen (`results/summary/m3.md`) |
-| M4 pilot fine-tune | **In progress.** Pilot (310 gold trajectories, 39 steps, peak 19.7 GiB): val 62% (Q4) / 64% (f16), equal to the v2 prompt overall; incidents up, requests down. Cause: gold trajectories leak the answer through the first call. Second pilot on runbook trajectories (no leak): val 57%, incidents 18/55, unallowed effects 2 (was 32); it follows the runbook's call order but takes the majority branch instead of reading the tool result. Next: more runbook data (`results/summary/m4-pilot.md`) |
-| M5 full comparison | **Started 2026-10-23.** Training on 1,240 runbook trajectories (4x the pilot, other settings unchanged); results pending |
+| M4 pilot fine-tune | **Done.** Pilot (310 gold trajectories, 39 steps, peak 19.7 GiB): val 62% (Q4) / 64% (f16), equal to the v2 prompt overall; incidents up, requests down. Cause: gold trajectories leak the answer through the first call. Second pilot on runbook trajectories (no leak): val 57%, incidents 18/55, unallowed effects 2 (was 32); it follows the runbook's call order but takes the majority branch instead of reading the tool result. Next: more runbook data (`results/summary/m4-pilot.md`) |
+| M5 full comparison | **Main result in (one seed).** 1,240 runbook trajectories: test_unseen 130/155 (84%) vs 14B + v2 prompt 73% (p = 0.0076); per factor 84–90%; general capability unchanged (`results/summary/m5-analysis.md`). Seeds, latency benchmark and transfer check pending |
 | M6 ablations | Not started; the 310 / 1,240 runs are the first points of the data-quantity ablation |
 
 ### Decisions and deviations
@@ -113,15 +113,15 @@ Brief: [SPEC.md](SPEC.md). This is an **experimental study**. The research quest
 - [x] Same tool set, retry budget, and max steps for every condition (12 steps, 3 retries).
 
 ### M4 — Pilot fine-tune (½–1 week)
-- [ ] Stop the 01 server and other heavy processes first.
+- [ ] Stop the 01 server and other heavy processes first. (Not possible: the GPU is shared with other users' jobs; runs use env/mem_guard.sh instead.)
 - [x] Small subset, LoRA, modest seq length. Record peak memory and step time (310 examples, r16, 19.7 GiB peak, ~105 s/step).
 - [x] Save adapter → reload into serving stack → reproduce the evaluated scores. The GGUF is byte-identical, and single-request runs are deterministic. With 4 parallel slots, val gave 94 vs 96/155 (4 flips) from batching, not the adapter.
 - [x] Second pilot on runbook trajectories (`.run/sft/pilot-runbook.jsonl`), val only: 89/155; leak gone, observation reading not learned at 310 examples.
 
 ### M5 — Full comparison (1–2 weeks)
-- [ ] Scale data (hundreds → thousands only once generator/scorer are trusted).
-- [ ] Evaluate on untouched held-out splits. Multiple seeds where compute permits; report spread.
-- [ ] Check a small general-capability set for regression.
+- [x] Scale data (hundreds → thousands only once generator/scorer are trusted). (310 → 1,240 runbook trajectories.)
+- [ ] Evaluate on untouched held-out splits. Multiple seeds where compute permits; report spread. (All six sets done for seed 0; more seeds running.)
+- [x] Check a small general-capability set for regression. (01's 60 held-out prompts: 59/60 base and tuned.)
 
 ### M6 — Ablations (1–2 weeks)
 One factor at a time: data quantity · data quality (e.g. with/without hard negatives) · LoRA rank/targets. At least one is required.
@@ -137,4 +137,4 @@ Task completion (state-verified) · tool-selection accuracy · argument validity
 - Training-stack support on GB10/arm64 — follow NVIDIA's Spark fine-tuning recipe; quantized training only if verified.
 
 ## Definition of done
-- [ ] Baselines · [ ] ≥1 controlled ablation · [ ] held-out results with variance · [ ] failure analysis · [ ] dataset card (done: `docs/03-dataset-card.md`) + adapter card · [ ] write-up (negative result acceptable)
+- [x] Baselines · [ ] ≥1 controlled ablation · [ ] held-out results with variance · [x] failure analysis · [ ] dataset card (done: `docs/03-dataset-card.md`) + adapter card · [ ] write-up (negative result acceptable)

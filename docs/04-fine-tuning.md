@@ -127,10 +127,19 @@ consistent with the shortcut it could take. The next factor to change is data qu
 runbook source; the 310-task run becomes the smallest point of the data-quantity ablation
 ([06](06-roadmap.md)).
 
+## M5: 1,240 runbook trajectories
+
+Same settings, 4x the second pilot's data (`train/build_sft.py --n 1240 --policy runbook`; 155
+steps, 6 h 41 min on the shared GPU, peak 19.8 GiB). Val 135/155 (87%) against 89/155 for the second
+pilot (3 vs 49 discordant tasks): crashed and hung workers went from 0/10 to 10/10, so the
+majority-branch behaviour was data quantity. The 20 val failures sit at a few value comparisons
+(bad config "buried", bad deploy vs bad config, queue growth, latest vs not-latest version,
+heartbeat threshold). On test_unseen it scores 130/155 (84%) ([05](05-evaluation.md)).
+
 ## What is not claimed
 
-- No tuned model has a test-set number. Every LoRA result above is val, and val was used to diagnose
-  these pilots.
+- One training seed. The spread across training runs isn't measured yet.
+- The two pilots have val results only, and val was used to diagnose them.
 - The improved prompt's val score is optimistic too (chosen on val), so "pilot 1 equals the improved
   prompt on val" is not evidence that the two would tie on test_unseen.
 - Training time and step time come from a shared GPU (pilot 2's early steps ran up to 2× slower while
