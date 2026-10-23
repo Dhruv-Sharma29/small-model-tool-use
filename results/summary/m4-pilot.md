@@ -102,3 +102,18 @@ most common branch, not the conditional on the tool result. Part of the first pi
 is consistent with the shortcut it could take (it rose on the kinds the leak covers). Next: one
 factor at a time, more runbook data first (planned M5 scaling; the 310-task run becomes the
 smallest point of the data-quantity ablation).
+
+## Reload check: same GGUF, rerun on val
+
+Re-exporting the adapter reproduced the Q4_K_M byte for byte (c1c55a74a49d). Serving that file again
+and rerunning val (`results/raw/20261023T070231Z-lora-pilot-7b-reload-val.jsonl`) gave 94/155 against
+96/155: 109/155 trajectories identical, 4 tasks changed success (3 lost, 1 gained), most other
+differences only in the finish message wording.
+
+Cause, tested: with 4 requests in flight, llama.cpp batches them together, and the batch a request
+shares changes its floating-point results, so temperature 0 is not deterministic. Two runs of 30 val tasks
+one request at a time (`results/raw/smoke/*-det1-*`) were identical (30/30 trajectories, 14/14 success).
+
+Consequence for every comparison in this study (all runs use 4 slots): a val difference of a few
+tasks is within serving noise. The run-to-run spread measured here (4 flips, net 2) is one sample, not
+a bound; the M5 seeds and paired tests carry the comparisons.

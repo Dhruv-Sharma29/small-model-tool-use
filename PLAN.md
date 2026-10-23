@@ -68,6 +68,10 @@ Brief: [SPEC.md](SPEC.md). This is an **experimental study**. The research quest
   Second pilot (2026-10-23): no shortcut left, but at 310 examples the model takes the majority
   branch (service_status → more reads in 90/110 incident examples) and never restarts a broken worker
   on val (0/10). Next factor to change: data quantity, keeping the runbook source.
+- **2026-10-23 — 4-slot serving is not deterministic at temperature 0.** Same GGUF, val rerun: 94 vs
+  96/155, 4 tasks flipped; one request at a time, two 30-task runs were identical. Kept 4 slots (all
+  baselines ran that way, and changing it now would break comparability); differences of a few tasks
+  on 155 are treated as noise, and comparisons rest on paired tests and M5 seeds.
 - **Runbook policy gets the request's meaning, not its answer.** For requests it receives kind +
   slots (what the text says); conditions, existence and "is this the latest change" come from tools.
   For incidents it gets nothing but tool output.
@@ -110,7 +114,7 @@ Brief: [SPEC.md](SPEC.md). This is an **experimental study**. The research quest
 ### M4 — Pilot fine-tune (½–1 week)
 - [ ] Stop the 01 server and other heavy processes first.
 - [x] Small subset, LoRA, modest seq length. Record peak memory and step time (310 examples, r16, 19.7 GiB peak, ~105 s/step).
-- [ ] Save adapter → reload into serving stack → reproduce the evaluated scores exactly. Export reproduces the GGUF hash; the score rerun is still owed.
+- [x] Save adapter → reload into serving stack → reproduce the evaluated scores. The GGUF is byte-identical, and single-request runs are deterministic. With 4 parallel slots, val gave 94 vs 96/155 (4 flips) from batching, not the adapter.
 - [x] Second pilot on runbook trajectories (`.run/sft/pilot-runbook.jsonl`), val only: 89/155; leak gone, observation reading not learned at 310 examples.
 
 ### M5 — Full comparison (1–2 weeks)
@@ -125,7 +129,7 @@ One factor at a time: data quantity · data quality (e.g. with/without hard nega
 Task completion (state-verified) · tool-selection accuracy · argument validity · unnecessary/unauthorized calls · retries · latency · peak memory · general-capability delta.
 
 ## Tests
-- [x] Invalid args rejected before execution (`tests/test_validation.py`) · [x] scorer rejects plausible but wrong-state calls (`tests/test_scorer.py`: wrong outcome, claim without action, extra action, wrong worker, wrong action; mutation-checked) · [x] no train/eval overlap (automated check: `tests/test_splits.py`, mutation-checked) · [ ] adapter reload reproduces scores · [x] no-action + missing-info scored explicitly
+- [x] Invalid args rejected before execution (`tests/test_validation.py`) · [x] scorer rejects plausible but wrong-state calls (`tests/test_scorer.py`: wrong outcome, claim without action, extra action, wrong worker, wrong action; mutation-checked) · [x] no train/eval overlap (automated check: `tests/test_splits.py`, mutation-checked) · [x] adapter reload reproduces scores (byte-identical GGUF; deterministic at 1 request in flight) · [x] no-action + missing-info scored explicitly
 
 ## Risks
 - Synthetic tasks can be too regular → model learns templates, not the task. The unfamiliar-template split is the guard.
