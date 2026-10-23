@@ -22,6 +22,7 @@ for the steps that need the GPU, see [RUNBOOK.md](../RUNBOOK.md).
 | 07 | [Risks](07-risks.md) | Thesis and delivery risks, the two that already happened, claim hygiene |
 | 08 | [Learning checklist](08-learning-checklist.md) | Skills per milestone, and interview talking points mapped to the code |
 | 09 | [Implementation notes](09-implementation-notes.md) | Where the build departs from the plan, and why |
+| 10 | [Adapter card](10-adapter-card.md) | The M5 checkpoint: base, licence, data, training, results, limits |
 
 ## The one-paragraph version
 
@@ -58,8 +59,7 @@ cannot come from memorised prompts, leaked answers or serving noise.
   the untuned 44% (p = 0.36) though with 9 unallowed effects instead of 77; 1,240 give 84% (5 vs 59
   discordant against 310) (`results/summary/m6-data-quantity.md`).
 - **Not done yet:** seed spread, the controlled latency and memory benchmark (needs the GPU to
-  itself), the transfer check on project 02's live incidents (running), further ablations, the adapter
-  card and the write-up.
+  itself), the transfer check on project 02's live incidents (running), further ablations and the write-up.
 
 The research question has a first answer on accuracy: in this simulated setting a tuned 7B beats
 both better prompting and a 2x larger model. Seed spread and the latency/memory cost are still owed. See [06](06-roadmap.md) for what comes next and

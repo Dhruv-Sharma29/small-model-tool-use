@@ -121,6 +121,6 @@ done.
 | --- | --- |
 | Dataset card, split definitions | Done: [03](03-dataset-card.md), `tasks/splits/splits.json` |
 | Training and evaluation scripts, configurations | Done for M1–M4: `train/`, `eval/`, `env/` |
-| Adapter / model card | Not written; needs the M5 checkpoint and the 7B licence **[verify]** |
+| Adapter / model card | Done 2026-10-23: [10](10-adapter-card.md) |
 | Results with variance | Partial: M3 with CIs and paired tests; no seed spread yet |
 | Experimental write-up with failure analysis | Not written; pilot analyses in `results/summary/m3-val-analysis.md` and `m4-pilot.md` |

@@ -113,7 +113,7 @@ The original design doc listed three decisions to make before building. All thre
 
 | Decision | Outcome | Where |
 | --- | --- | --- |
-| Base model: supported by the serving recipe and licensed for this use | Qwen2.5-7B-Instruct (rev a09a354) tuned; Qwen2.5-14B-Instruct (rev cf98f3b, Apache-2.0) as the larger model. The 7B's licence is not recorded in the repo **[verify]** before publishing an adapter card | `train/build_sft.py`, `env/models.sh`, PLAN.md |
+| Base model: supported by the serving recipe and licensed for this use | Qwen2.5-7B-Instruct (rev a09a354) tuned; Qwen2.5-14B-Instruct (rev cf98f3b, Apache-2.0) as the larger model. The 7B is Apache-2.0 too (the snapshot's `LICENSE`; [10](10-adapter-card.md)) | `train/build_sft.py`, `env/models.sh`, PLAN.md |
 | Sequence length and batch size, from the pilot's measured peak memory | Batch 1 with 8-step gradient accumulation, whole trajectories (no truncation); pilot peak 19.7 GiB allocated | `train/sft.py`, `results/summary/m4-pilot.md` |
 | Whether quantised training is supported on this hardware/software | Not attempted: LoRA on a bf16 base. Quantisation happens only at export, identically for every condition | `train/sft.py`, `train/export.py` |
 
