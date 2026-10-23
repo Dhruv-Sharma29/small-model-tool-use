@@ -1,0 +1,134 @@
+{
+ "generated": "2026-10-09T06:18:19+00:00",
+ "seeds": 5,
+ "tasks": 930,
+ "scenarios": 186,
+ "kinds": 22,
+ "tools": [
+  "cleanup_spool",
+  "config_history",
+  "deploy_history",
+  "finish",
+  "get_metrics",
+  "restart_service",
+  "rollback_config",
+  "rollback_release",
+  "scale_service",
+  "search_logs",
+  "service_status"
+ ],
+ "budget": {
+  "max_steps": 12,
+  "max_retries": 3
+ },
+ "outcome_mix": {
+  "resolved": 570,
+  "escalated": 150,
+  "no_action_needed": 120,
+  "need_information": 90
+ },
+ "family_mix": {
+  "incident": 330,
+  "request": 600
+ },
+ "success": {
+  "reference (gold replay)": 1.0,
+  "runbook (observations only)": 1.0,
+  "always finish resolved": 0.0,
+  "always finish no_action_needed": 0.129,
+  "always finish escalated": 0.161,
+  "always finish need_information": 0.097,
+  "restart all workers, claim resolved": 0.072
+ },
+ "gold_steps_median": 3,
+ "by_kind": {
+  "inc_bad_config": {
+   "reference (gold replay)": "60/60",
+   "runbook (observations only)": "60/60"
+  },
+  "inc_bad_deploy": {
+   "reference (gold replay)": "30/30",
+   "runbook (observations only)": "30/30"
+  },
+  "inc_disk_fill": {
+   "reference (gold replay)": "30/30",
+   "runbook (observations only)": "30/30"
+  },
+  "inc_expired_credential": {
+   "reference (gold replay)": "30/30",
+   "runbook (observations only)": "30/30"
+  },
+  "inc_exporter_leak": {
+   "reference (gold replay)": "30/30",
+   "runbook (observations only)": "30/30"
+  },
+  "inc_false_alarm": {
+   "reference (gold replay)": "30/30",
+   "runbook (observations only)": "30/30"
+  },
+  "inc_queue_backlog": {
+   "reference (gold replay)": "30/30",
+   "runbook (observations only)": "30/30"
+  },
+  "inc_slow_dependency": {
+   "reference (gold replay)": "30/30",
+   "runbook (observations only)": "30/30"
+  },
+  "inc_worker_crashed": {
+   "reference (gold replay)": "30/30",
+   "runbook (observations only)": "30/30"
+  },
+  "inc_worker_hung": {
+   "reference (gold replay)": "30/30",
+   "runbook (observations only)": "30/30"
+  },
+  "req_cleanup": {
+   "reference (gold replay)": "30/30",
+   "runbook (observations only)": "30/30"
+  },
+  "req_if_hung": {
+   "reference (gold replay)": "60/60",
+   "runbook (observations only)": "60/60"
+  },
+  "req_if_spool_full": {
+   "reference (gold replay)": "60/60",
+   "runbook (observations only)": "60/60"
+  },
+  "req_restart_ambiguous": {
+   "reference (gold replay)": "60/60",
+   "runbook (observations only)": "60/60"
+  },
+  "req_restart_failed": {
+   "reference (gold replay)": "60/60",
+   "runbook (observations only)": "60/60"
+  },
+  "req_restart_instance": {
+   "reference (gold replay)": "60/60",
+   "runbook (observations only)": "60/60"
+  },
+  "req_restart_service": {
+   "reference (gold replay)": "60/60",
+   "runbook (observations only)": "60/60"
+  },
+  "req_rollback_release": {
+   "reference (gold replay)": "30/30",
+   "runbook (observations only)": "30/30"
+  },
+  "req_scale": {
+   "reference (gold replay)": "60/60",
+   "runbook (observations only)": "60/60"
+  },
+  "req_scale_unspecified": {
+   "reference (gold replay)": "30/30",
+   "runbook (observations only)": "30/30"
+  },
+  "req_unavailable": {
+   "reference (gold replay)": "30/30",
+   "runbook (observations only)": "30/30"
+  },
+  "req_undo_config_by_author": {
+   "reference (gold replay)": "60/60",
+   "runbook (observations only)": "60/60"
+  }
+ }
+}
