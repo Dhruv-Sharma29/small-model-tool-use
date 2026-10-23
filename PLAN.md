@@ -15,7 +15,7 @@ Brief: [SPEC.md](SPEC.md). This is an **experimental study**. The research quest
 | M3 baselines | **Done.** test_unseen: base 7B 44%, improved prompt (v2) 58%, base 14B 63%, 14B + v2 prompt 73%. 7B + v2 vs base 14B not distinguishable (23 vs 15 tasks, p = 0.26). 7B on all six sets, 14B on val + test_unseen (`results/summary/m3.md`) |
 | M4 pilot fine-tune | **Done.** Pilot (310 gold trajectories, 39 steps, peak 19.7 GiB): val 62% (Q4) / 64% (f16), equal to the v2 prompt overall; incidents up, requests down. Cause: gold trajectories leak the answer through the first call. Second pilot on runbook trajectories (no leak): val 57%, incidents 18/55, unallowed effects 2 (was 32); it follows the runbook's call order but takes the majority branch instead of reading the tool result. Next: more runbook data (`results/summary/m4-pilot.md`) |
 | M5 full comparison | **Main result in (one seed).** 1,240 runbook trajectories: test_unseen 130/155 (84%) vs 14B + v2 prompt 73% (p = 0.0076); per factor 84–90%; general capability unchanged (`results/summary/m5-analysis.md`). Seeds, latency benchmark and transfer check pending |
-| M6 ablations | Not started; the 310 / 1,240 runs are the first points of the data-quantity ablation |
+| M6 ablations | **One done (data quantity).** test_unseen: 310 runbook examples 49% (vs base 44%, p = 0.36), 1,240 examples 84% (vs 310: 5 / 59 discordant, p < 0.001) (`results/summary/m6-data-quantity.md`) |
 
 ### Decisions and deviations
 
@@ -137,4 +137,4 @@ Task completion (state-verified) · tool-selection accuracy · argument validity
 - Training-stack support on GB10/arm64 — follow NVIDIA's Spark fine-tuning recipe; quantized training only if verified.
 
 ## Definition of done
-- [x] Baselines · [ ] ≥1 controlled ablation · [ ] held-out results with variance · [x] failure analysis · [ ] dataset card (done: `docs/03-dataset-card.md`) + adapter card · [ ] write-up (negative result acceptable)
+- [x] Baselines · [x] ≥1 controlled ablation · [ ] held-out results with variance · [x] failure analysis · [ ] dataset card (done: `docs/03-dataset-card.md`) + adapter card · [ ] write-up (negative result acceptable)

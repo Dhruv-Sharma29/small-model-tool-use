@@ -129,6 +129,14 @@ General capability on project 01's 60 held-out prompts: 59/60 for base and tuned
 replies to plain prompts. The checkpoint's recipe was fixed before any of these numbers were seen
 (4x the second pilot's data, nothing else changed).
 
+### M6: data quantity (`results/summary/m6-data-quantity.md`)
+
+| Runbook training examples (seed 0, all else equal) | test_unseen | Unallowed effects | Paired |
+| --- | --- | --- | --- |
+| 0 (base 7B) | 68/155 (44%) | 77 | — |
+| 310 | 76/155 (49%) | 9 | vs base: 25 / 33 discordant, p = 0.36 |
+| 1,240 | 130/155 (84%) | 22 | vs 310: 5 / 59 discordant, p < 0.001 |
+
 ### A failure pattern worth knowing: text-written calls
 
 The 14B sometimes writes `finish({...})` as text instead of a tool call. Under the strict format that
@@ -166,4 +174,3 @@ numbers so far are training ones: peak 19.7 GiB allocated for the pilot.
 | Repeated seeds | Spread across training runs, not just serving | M5 (running) |
 | Transfer check on 02's 30 live incidents | The only check against real processes; 02 reports 15/30 for its simple agent (`02-reliable-operations-agent/results/summary/m5-comparison.md`) | M5 |
 | Controlled latency/memory benchmark | The cost half of the question | M5, one model at a time |
-| Ablation (one factor) | SPEC.md definition of done | M6 |

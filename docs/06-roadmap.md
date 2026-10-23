@@ -12,7 +12,7 @@ acceptance view: what each milestone must show, what closed it, and what is next
 | M3 Baselines | **Done** | `results/summary/m3.md` ([05](05-evaluation.md)) |
 | M4 Pilot fine-tune | **Pilots done, val only** | Two 310-example pilots, reload check passed ([04](04-fine-tuning.md)) |
 | M5 Full comparison | **Main result in (one seed): test_unseen 130/155 (84%)**; seeds, latency, transfer pending | LoRA on 1,240 runbook trajectories (40 per kind-variant, `.run/adapters/runbook-1240`), then export and evaluation |
-| M6 Ablations | Not started | Needs M5 |
+| M6 Ablations | **Data quantity done** (310 vs 1,240 on test_unseen, paired) | `results/summary/m6-data-quantity.md` |
 
 ## What changed from the original plan, and why
 
@@ -89,11 +89,23 @@ One factor at a time; at least one is required (SPEC.md).
 
 | Ablation | Factor | Already have |
 | --- | --- | --- |
-| Data quantity | 310 → 1,240 → more runbook examples | The 310-example pilot 2 is the smallest point |
+| Data quantity | 310 → 1,240 → more runbook examples | **Done 2026-10-23** on test_unseen (below) |
 | Data quality | Gold vs runbook trajectories at equal size; with/without hard negatives | Gold vs runbook at 310 (pilots 1 and 2, val) |
 | Adapter | LoRA rank / target modules | Nothing yet |
 
 **Done when:** at least one ablation is run on the same held-out set as M5 with paired tests.
+Met on 2026-10-23 (`results/summary/m6-data-quantity.md`):
+
+| Runbook training examples (seed 0, all else equal) | test_unseen | Unallowed effects | Paired |
+| --- | --- | --- | --- |
+| 0 (base 7B) | 68/155 (44%) | 77 | — |
+| 310 | 76/155 (49%) | 9 | vs base: 25 / 33 discordant, p = 0.36 |
+| 1,240 | 130/155 (84%) | 22 | vs 310: 5 / 59 discordant, p < 0.001 |
+
+At 310 examples the tuned model completes no more tasks than the untuned one, but it causes far
+fewer unallowed effects (9 vs 77): it has learned the procedure's caution before its decisions. Four
+times the data turns that into task success. A third point (3,100, the whole training split) would
+show whether the curve is flattening.
 
 ## Cut line
 
