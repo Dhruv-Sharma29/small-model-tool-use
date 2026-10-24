@@ -1,0 +1,173 @@
+{
+ "runs": [
+  {
+   "condition": "lora-pilot-runbook-7b",
+   "set": "test_unseen",
+   "model_file": "models/qwen2.5-7b-lora-pilot-runbook-Q4_K_M.gguf",
+   "prompt": "base",
+   "tasks": 155,
+   "success": 76,
+   "rate": 0.49,
+   "ci95": [
+    0.413,
+    0.568
+   ],
+   "by_family": {
+    "incident": "19/55",
+    "request": "57/100"
+   },
+   "by_expected_outcome": {
+    "escalated": "14/25",
+    "need_information": "7/15",
+    "no_action_needed": "14/20",
+    "resolved": "41/95"
+   },
+   "failed_checks": {
+    "outcome": 79,
+    "healthy": 42,
+    "restarted": 33,
+    "effects_allowed": 9,
+    "unchanged": 9,
+    "release": 5,
+    "replicas": 5,
+    "config_values": 1
+   },
+   "stop_reasons": {
+    "finished": 155
+   },
+   "invalid_call_rate": 0.0,
+   "text_replies": 0,
+   "transport_errors": 0,
+   "tool_selection_ok": 0.594,
+   "episodes_with_unallowed_effects": 9,
+   "mean_steps": 3.01,
+   "calls_never_reading": 28,
+   "latency_s_p50": 2.37,
+   "latency_s_p95": 4.1,
+   "completion_tokens": 10594,
+   "max_prompt_tokens": 2210,
+   "dropped_parallel_calls": 0,
+   "raw": "results/raw/20261023T143325Z-lora-pilot-runbook-7b-test_unseen.jsonl"
+  },
+  {
+   "condition": "lora-runbook-1240-7b",
+   "set": "test_unseen",
+   "model_file": "models/qwen2.5-7b-lora-runbook-1240-Q4_K_M.gguf",
+   "prompt": "base",
+   "tasks": 155,
+   "success": 130,
+   "rate": 0.839,
+   "ci95": [
+    0.773,
+    0.888
+   ],
+   "by_family": {
+    "incident": "39/55",
+    "request": "91/100"
+   },
+   "by_expected_outcome": {
+    "escalated": "17/25",
+    "need_information": "15/15",
+    "no_action_needed": "16/20",
+    "resolved": "82/95"
+   },
+   "failed_checks": {
+    "effects_allowed": 22,
+    "outcome": 15,
+    "unchanged": 12,
+    "healthy": 10,
+    "release": 5,
+    "config_values": 3
+   },
+   "stop_reasons": {
+    "finished": 155
+   },
+   "invalid_call_rate": 0.0,
+   "text_replies": 0,
+   "transport_errors": 0,
+   "tool_selection_ok": 0.839,
+   "episodes_with_unallowed_effects": 22,
+   "mean_steps": 3.25,
+   "calls_never_reading": 30,
+   "latency_s_p50": 2.52,
+   "latency_s_p95": 5.49,
+   "completion_tokens": 11470,
+   "max_prompt_tokens": 2425,
+   "dropped_parallel_calls": 0,
+   "raw": "results/raw/20261023T140214Z-lora-runbook-1240-7b-test_unseen.jsonl"
+  },
+  {
+   "condition": "base-7b",
+   "set": "test_unseen",
+   "model_file": "models/qwen2.5-7b-instruct-a09a354-Q4_K_M.gguf",
+   "prompt": "base",
+   "tasks": 155,
+   "success": 68,
+   "rate": 0.439,
+   "ci95": [
+    0.363,
+    0.517
+   ],
+   "by_family": {
+    "incident": "9/55",
+    "request": "59/100"
+   },
+   "by_expected_outcome": {
+    "escalated": "0/25",
+    "need_information": "0/15",
+    "no_action_needed": "4/20",
+    "resolved": "64/95"
+   },
+   "failed_checks": {
+    "effects_allowed": 77,
+    "outcome": 59,
+    "unchanged": 49,
+    "healthy": 26,
+    "restarted": 17,
+    "finished": 6,
+    "release": 5
+   },
+   "stop_reasons": {
+    "finished": 149,
+    "max_steps": 6
+   },
+   "invalid_call_rate": 0.0,
+   "text_replies": 0,
+   "transport_errors": 0,
+   "tool_selection_ok": 0.465,
+   "episodes_with_unallowed_effects": 77,
+   "mean_steps": 4.14,
+   "calls_never_reading": 80,
+   "latency_s_p50": 5.94,
+   "latency_s_p95": 14.27,
+   "completion_tokens": 19251,
+   "max_prompt_tokens": 3759,
+   "dropped_parallel_calls": 10,
+   "raw": "results/raw/20261009T062734Z-base-7b-test_unseen.jsonl"
+  }
+ ],
+ "pairs": {
+  "lora-pilot-runbook-7b vs lora-runbook-1240-7b": [
+   {
+    "set": "test_unseen",
+    "tasks": 155,
+    "lora-pilot-runbook-7b": 76,
+    "lora-runbook-1240-7b": 130,
+    "only_lora-pilot-runbook-7b": 5,
+    "only_lora-runbook-1240-7b": 59,
+    "p_mcnemar": 0.0
+   }
+  ],
+  "base-7b vs lora-pilot-runbook-7b": [
+   {
+    "set": "test_unseen",
+    "tasks": 155,
+    "base-7b": 68,
+    "lora-pilot-runbook-7b": 76,
+    "only_base-7b": 25,
+    "only_lora-pilot-runbook-7b": 33,
+    "p_mcnemar": 0.3581
+   }
+  ]
+ }
+}
