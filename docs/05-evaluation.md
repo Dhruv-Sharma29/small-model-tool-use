@@ -113,7 +113,10 @@ lora-pilot-7b 96/155, lora-pilot-7b-f16 99/155, lora-pilot-runbook-7b 89/155, ag
 96/155 and base-14b 100/155 on the same set. Analysis in [04](04-fine-tuning.md). Two caveats make
 these weaker than they look: val chose the improved prompt, and val diagnosed the pilots.
 
-### M5: LoRA on 1,240 runbook trajectories, one seed (`results/summary/m5-analysis.md`, `m5.md`)
+### M5: LoRA on 1,240 runbook trajectories (`results/summary/m5-analysis.md`, `m5.md`, `m5-seeds.md`)
+
+Three training seeds on test_unseen: 84%, 88%, 94% (mean 88.4% ± 4.9); every seed ahead of the 14B
+with the improved prompt (p ≤ 0.0076). The table below is seed 0, the weakest.
 
 | Condition | test_unseen | 95% CI | vs tuned 7B (only other / only tuned, exact McNemar) |
 | --- | --- | --- | --- |

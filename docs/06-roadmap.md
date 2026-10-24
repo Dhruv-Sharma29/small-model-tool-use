@@ -11,7 +11,7 @@ acceptance view: what each milestone must show, what closed it, and what is next
 | M2 Leak-resistant splits | **Done** | 0 factor leakage, test_unseen shares no example with train ([03](03-dataset-card.md)) |
 | M3 Baselines | **Done** | `results/summary/m3.md` ([05](05-evaluation.md)) |
 | M4 Pilot fine-tune | **Pilots done, val only** | Two 310-example pilots, reload check passed ([04](04-fine-tuning.md)) |
-| M5 Full comparison | **Main result in (one seed): test_unseen 130/155 (84%)**; transfer check done (12/30 vs base 16/30 on 02's live harness); latency measured (`results/summary/latency.md`); seeds pending | LoRA on 1,240 runbook trajectories (40 per kind-variant, `.run/adapters/runbook-1240`), then export and evaluation |
+| M5 Full comparison | **Done**: test_unseen 84% / 88% / 94% over three seeds (`results/summary/m5-seeds.md`); transfer check (12/30 vs base 16/30 on 02's live harness); latency (`results/summary/latency.md`) | LoRA on 1,240 runbook trajectories (40 per kind-variant, `.run/adapters/runbook-1240`), then export and evaluation |
 | M6 Ablations | **Data quantity done** (310 vs 1,240 on test_unseen, paired) | `results/summary/m6-data-quantity.md` |
 
 ## What changed from the original plan, and why
@@ -126,5 +126,5 @@ done.
 | Dataset card, split definitions | Done: [03](03-dataset-card.md), `tasks/splits/splits.json` |
 | Training and evaluation scripts, configurations | Done for M1–M4: `train/`, `eval/`, `env/` |
 | Adapter / model card | Done 2026-10-23: [10](10-adapter-card.md) |
-| Results with variance | CIs and paired tests throughout; training-seed spread running |
+| Results with variance | Done: CIs and paired tests throughout; three training seeds (88.4% ± 4.9 on test_unseen) |
 | Experimental write-up with failure analysis | Done: [11](11-write-up.md) |

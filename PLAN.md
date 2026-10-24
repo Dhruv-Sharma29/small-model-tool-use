@@ -14,7 +14,7 @@ Brief: [SPEC.md](SPEC.md). This is an **experimental study**. The research quest
 | M2 leak-resistant splits | **Done.** Splits frozen before generation (template frames, ~30% of entities, 1 distractor per kind-variant); 3,100 train + 6 x 155 eval tasks, rebuilt byte for byte. Audit: 0 factor leakage; test_unseen shares no example with train. Seen-template sets reward memorisation (lookup ceiling 37–40%), so test_unseen is primary (`results/summary/m2_audit.md`, `docs/03-dataset-card.md`) |
 | M3 baselines | **Done.** test_unseen: base 7B 44%, improved prompt (v2) 58%, base 14B 63%, 14B + v2 prompt 73%. 7B + v2 vs base 14B not distinguishable (23 vs 15 tasks, p = 0.26). 7B on all six sets, 14B on val + test_unseen (`results/summary/m3.md`) |
 | M4 pilot fine-tune | **Done.** Pilot (310 gold trajectories, 39 steps, peak 19.7 GiB): val 62% (Q4) / 64% (f16), equal to the v2 prompt overall; incidents up, requests down. Cause: gold trajectories leak the answer through the first call. Second pilot on runbook trajectories (no leak): val 57%, incidents 18/55, unallowed effects 2 (was 32); it follows the runbook's call order but takes the majority branch instead of reading the tool result. Next: more runbook data (`results/summary/m4-pilot.md`) |
-| M5 full comparison | **Main result in (one seed).** 1,240 runbook trajectories: test_unseen 130/155 (84%) vs 14B + v2 prompt 73% (p = 0.0076); per factor 84–90%; general capability unchanged (`results/summary/m5-analysis.md`). Transfer check: 12/30 vs base 16/30 on 02's live harness, gain does not transfer across tool interfaces (`results/summary/m5-transfer.md`). Latency: about 5x faster per episode than 14B + v2 prompt, 2.3x less GPU memory (`results/summary/latency.md`). Seeds pending |
+| M5 full comparison | **Done.** Three seeds on test_unseen: 84% / 88% / 94% (`results/summary/m5-seeds.md`). 1,240 runbook trajectories: test_unseen 130/155 (84%) vs 14B + v2 prompt 73% (p = 0.0076); per factor 84–90%; general capability unchanged (`results/summary/m5-analysis.md`). Transfer check: 12/30 vs base 16/30 on 02's live harness, gain does not transfer across tool interfaces (`results/summary/m5-transfer.md`). Latency: about 5x faster per episode than 14B + v2 prompt, 2.3x less GPU memory (`results/summary/latency.md`). Seeds pending |
 | M6 ablations | **One done (data quantity).** test_unseen: 310 runbook examples 49% (vs base 44%, p = 0.36), 1,240 examples 84% (vs 310: 5 / 59 discordant, p < 0.001) (`results/summary/m6-data-quantity.md`) |
 
 ### Decisions and deviations
@@ -120,7 +120,7 @@ Brief: [SPEC.md](SPEC.md). This is an **experimental study**. The research quest
 
 ### M5 — Full comparison (1–2 weeks)
 - [x] Scale data (hundreds → thousands only once generator/scorer are trusted). (310 → 1,240 runbook trajectories.)
-- [ ] Evaluate on untouched held-out splits. Multiple seeds where compute permits; report spread. (All six sets done for seed 0; more seeds running.)
+- [x] Evaluate on untouched held-out splits. Multiple seeds where compute permits; report spread. (All six sets for seed 0; val + test_unseen for seeds 1 and 2: 84 / 88 / 94%.)
 - [x] Check a small general-capability set for regression. (01's 60 held-out prompts: 59/60 base and tuned.)
 
 ### M6 — Ablations (1–2 weeks)
@@ -137,4 +137,4 @@ Task completion (state-verified) · tool-selection accuracy · argument validity
 - Training-stack support on GB10/arm64 — follow NVIDIA's Spark fine-tuning recipe; quantized training only if verified.
 
 ## Definition of done
-- [x] Baselines · [x] ≥1 controlled ablation · [ ] held-out results with variance · [x] failure analysis · [x] dataset card (`docs/03-dataset-card.md`) + adapter card (`docs/10-adapter-card.md`) · [x] write-up (`docs/11-write-up.md`) (negative result acceptable)
+- [x] Baselines · [x] ≥1 controlled ablation · [x] held-out results with variance · [x] failure analysis · [x] dataset card (`docs/03-dataset-card.md`) + adapter card (`docs/10-adapter-card.md`) · [x] write-up (`docs/11-write-up.md`) (negative result acceptable)

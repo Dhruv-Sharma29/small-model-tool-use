@@ -138,7 +138,8 @@ heartbeat threshold). On test_unseen it scores 130/155 (84%) ([05](05-evaluation
 
 ## What is not claimed
 
-- One training seed. The spread across training runs isn't measured yet.
+- A single exact number. Three training seeds give 84%, 88% and 94% on test_unseen
+  (`results/summary/m5-seeds.md`); the seed alone moves the result by up to 10 points.
 - The two pilots have val results only, and val was used to diagnose them.
 - The improved prompt's val score is optimistic too (chosen on val), so "pilot 1 equals the improved
   prompt on val" is not evidence that the two would tie on test_unseen.

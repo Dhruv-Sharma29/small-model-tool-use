@@ -40,7 +40,7 @@ cannot come from memorised prompts, leaked answers or serving noise.
 
 ## Status
 
-**As of 2026-10-23: M1–M4 done; M5 has its main result and its transfer check, with seed spread still running; M6 has its required ablation.**
+**As of 2026-10-24: M1–M4 done; M5 done (accuracy with seed spread, cost, general capability, transfer check); M6 has its required ablation.**
 
 - **M1 task definition, M2 leak-resistant splits:** done and tested (2,476 tests pass with
   `pytest -q` on CPU).
@@ -52,7 +52,8 @@ cannot come from memorised prompts, leaked answers or serving noise.
   to the improved prompt, but through a leak. Runbook trajectories: 89/155, leak gone, observation
   reading not learned. The adapter reload check passed: re-export gives a byte-identical GGUF, and
   4-slot serving is not deterministic at temperature 0 (`results/summary/m4-pilot.md`).
-- **M5, one seed:** LoRA on 1,240 runbook trajectories scores **130/155 (84%) on test_unseen**,
+- **M5:** LoRA on 1,240 runbook trajectories scores **84%, 88% and 94% on test_unseen across three
+  training seeds (mean 88.4% ± 4.9)**; the seed-0 checkpoint scores 130/155 (84%),
   ahead of every baseline including the 14B with the improved prompt (73%; 10 vs 27 discordant
   tasks, p = 0.0076). Per factor 84–90%. No general-capability regression on project 01's 60
   held-out prompts (59/60 base and tuned) (`results/summary/m5-analysis.md`, `m5.md`).
@@ -65,11 +66,11 @@ interface (`results/summary/m5-transfer.md`).
 - **Latency and memory:** against the 14B with the improved prompt, the tuned 7B is about 5x faster per episode at the
 median (3.3 vs 16.2 s), 9x at p95 (4.0 vs 36.6 s) and needs 2.3x less GPU memory (6.3 vs 14.6 GB),
 measured one model at a time on an otherwise idle GPU (`results/summary/latency.md`).
-- **Write-up:** [11](11-write-up.md). **Not done yet:** seed spread (two more training seeds running).
+- **Write-up:** [11](11-write-up.md).
 
 The research question has a first answer on accuracy: in this simulated setting a tuned 7B beats
 both better prompting and a 2x larger model, at a fifth of the 14B's latency and less than half its
-memory, but only on the tool interface it was trained on. Seed spread is still owed. See [06](06-roadmap.md) for what comes next and
+memory, for every one of three training seeds, but only on the tool interface it was trained on. See [06](06-roadmap.md) for what comes next and
 [09](09-implementation-notes.md) for the places where building it changed the plan.
 
 ## Conventions used in these docs

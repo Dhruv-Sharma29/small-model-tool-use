@@ -27,7 +27,7 @@ Every condition gets the same 10 tools plus `finish`, the same 12-step and 3-ret
 | Qwen2.5-7B, improved prompt | 58% | 10 / 50, p < 0.001 |
 | Qwen2.5-14B, base prompt | 63% | 13 / 45, p < 0.001 |
 | Qwen2.5-14B, improved prompt | 73% | 10 / 27, p = 0.0076 |
-| **Qwen2.5-7B + LoRA on 1,240 runbook trajectories** | **84%** | — |
+| **Qwen2.5-7B + LoRA on 1,240 runbook trajectories** (seed 0; seeds 1, 2: 88%, 94%) | **84%** | — |
 
 The tuned 7B holds up on every held-out factor (templates 88%, entities 86%, scenarios 84%, seen
 90%), and it has no general-capability regression on project 01's 60 held-out prompts (59/60 for base
@@ -78,7 +78,8 @@ is a result for the interface it was trained on.
 - **The runbook is the teacher.** The tuned model imitates a hand-written policy that solves the
   simulated tasks perfectly. The held-out templates, entities and scenarios test generalisation
   within that policy's world, not beyond it.
-- **Seeds.** The headline is one training seed; the spread is in the next section.
+- **Seeds.** Three training seeds give 84%, 88% and 94% on test_unseen (next section): the
+  conclusion holds for every seed, but the exact number moves by up to 10 points with the seed.
 - **Serving noise.** 4-slot serving at temperature 0 is not bit-deterministic: a rerun of the same
   model on val changed 4 of 155 tasks ([04](04-fine-tuning.md)). The differences above are far larger.
 - **The improved prompt was tuned on val** (two iterations), so its numbers are if anything
@@ -86,13 +87,28 @@ is a result for the interface it was trained on.
 
 ## Seed spread
 
-Pending: two more training seeds of the same recipe (same data, training seeds 1 and 2), evaluated
-on val and test_unseen.
+Three training seeds of the same recipe (same 1,240 examples; only the training seed changes the
+LoRA initialisation and example order), each evaluated on val and test_unseen
+(`results/summary/m5-seeds.md`):
+
+| Training seed | val | test_unseen | Unallowed effects (test_unseen) | vs 14B + improved prompt (only 14B / only tuned) |
+| --- | --- | --- | --- | --- |
+| 0 | 135/155 (87%) | 130/155 (84%) | 22 | 10 / 27, p = 0.0076 |
+| 1 | 138/155 (89%) | 136/155 (88%) | 12 | 5 / 28, p = 0.0001 |
+| 2 | 152/155 (98%) | 145/155 (94%) | 8 | 3 / 35, p < 0.001 |
+| **mean ± sd** | | **88.4% ± 4.9** | | every seed ahead |
+
+Every seed beats the 14B with the improved prompt (73%) by a significant margin, so the conclusion
+does not hang on one run. But the training seed alone moves test_unseen by 10 points (seeds 0 and 2
+differ: 3 vs 18 discordant tasks, p = 0.0015), more than serving noise (about 4 tasks) and more than
+the gap between some baselines. Seed 0, the checkpoint in the other sections and the adapter card,
+is the weakest of the three, so the single-seed numbers above are, if anything, conservative.
+Any comparison of tuned models in this setup needs several seeds per condition.
 
 ## Conclusion
 
-A 7B model fine-tuned with LoRA on 1,240 procedure traces completes 84% of held-out tool-use tasks
-by resulting state, ahead of the same model with a better prompt (58%) and of a 2x larger model with
+A 7B model fine-tuned with LoRA on 1,240 procedure traces completes 84–94% of held-out tool-use
+tasks by resulting state (three training seeds, mean 88%), ahead of the same model with a better prompt (58%) and of a 2x larger model with
 that prompt (73%), at about a fifth of the larger model's latency. Two conditions make the claim
 honest: the traces must not leak the answer through their structure, and the model must be used
 with the tool interface it was trained on; on a different interface for the same services the gain

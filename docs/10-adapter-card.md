@@ -58,7 +58,8 @@ model, and never answers a plain prompt with a tool call.
 - **Known failure points** (val): telling a bad config from a bad deploy, escalating when the bad
   change is not the latest version, reading queue growth, and threshold comparisons on heartbeat
   age (`results/summary/m5-analysis.md`).
-- **One training seed so far.** Latency and memory, measured alone on an idle GPU: model call
+- **Seed 0 of three.** Seeds 1 and 2 of the same recipe score 88% and 94% on test_unseen
+  (`results/summary/m5-seeds.md`); this card describes seed 0 (84%), the weakest. Latency and memory, measured alone on an idle GPU: model call
   p50 0.55 s, episode p50 3.3 s, 6.3 GB of GPU memory at Q4_K_M (`results/summary/latency.md`).
 - **It still acts wrongly sometimes:** 22 unallowed effects over 155 test_unseen episodes (the 14B
   with the improved prompt: 24). Anything real would need 02's approval layer in front of it.
