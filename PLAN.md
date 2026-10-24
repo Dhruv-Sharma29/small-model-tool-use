@@ -113,7 +113,7 @@ Brief: [SPEC.md](SPEC.md). This is an **experimental study**. The research quest
 - [x] Same tool set, retry budget, and max steps for every condition (12 steps, 3 retries).
 
 ### M4 — Pilot fine-tune (½–1 week)
-- [ ] Stop the 01 server and other heavy processes first. (Not possible: the GPU is shared with other users' jobs; runs use env/mem_guard.sh instead.)
+- [x] Stop the 01 server and other heavy processes first. (Our own servers were stopped before each training run; other users' jobs can't be stopped, so every run is watched by env/mem_guard.sh, which stops ours first if memory runs low.)
 - [x] Small subset, LoRA, modest seq length. Record peak memory and step time (310 examples, r16, 19.7 GiB peak, ~105 s/step).
 - [x] Save adapter → reload into serving stack → reproduce the evaluated scores. The GGUF is byte-identical, and single-request runs are deterministic. With 4 parallel slots, val gave 94 vs 96/155 (4 flips) from batching, not the adapter.
 - [x] Second pilot on runbook trajectories (`.run/sft/pilot-runbook.jsonl`), val only: 89/155; leak gone, observation reading not learned at 310 examples.
