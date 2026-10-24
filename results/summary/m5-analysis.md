@@ -1,4 +1,4 @@
-# M5: LoRA on 1,240 runbook trajectories (one seed)
+# M5: LoRA on 1,240 runbook trajectories (seed 0; all seeds in `m5-seeds.md`)
 
 Adapter `.run/adapters/runbook-1240` (same settings as both pilots: r16/alpha 32, all attention + MLP
 projections, lr 2e-4, 1 epoch = 155 steps of 8; 6 h 41 min on the shared GPU, peak 19.8 GiB). Data:
@@ -47,6 +47,7 @@ prompts can only show a large one.
 
 ## Not settled yet
 
-- One training seed. Seed spread needs more runs (PLAN M5).
+- Seed spread: done after this file was written. Seeds 1 and 2 score 88% and 94% on test_unseen
+  (`m5-seeds.md`).
 - Latency and memory: `eval/bench_latency.py` is ready but needs the GPU to itself.
 - Transfer to project 02's live incidents: running.

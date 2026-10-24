@@ -1,0 +1,399 @@
+{
+ "runs": [
+  {
+   "condition": "lora-runbook-1240-7b",
+   "set": "val",
+   "model_file": "models/qwen2.5-7b-lora-runbook-1240-Q4_K_M.gguf",
+   "prompt": "base",
+   "tasks": 155,
+   "success": 135,
+   "rate": 0.871,
+   "ci95": [
+    0.809,
+    0.915
+   ],
+   "by_family": {
+    "incident": "41/55",
+    "request": "94/100"
+   },
+   "by_expected_outcome": {
+    "escalated": "17/25",
+    "need_information": "15/15",
+    "no_action_needed": "20/20",
+    "resolved": "83/95"
+   },
+   "failed_checks": {
+    "outcome": 16,
+    "effects_allowed": 12,
+    "healthy": 9,
+    "unchanged": 8,
+    "release": 4,
+    "config_values": 3,
+    "restarted": 2
+   },
+   "stop_reasons": {
+    "finished": 155
+   },
+   "invalid_call_rate": 0.0,
+   "text_replies": 0,
+   "transport_errors": 0,
+   "tool_selection_ok": 0.871,
+   "episodes_with_unallowed_effects": 12,
+   "mean_steps": 3.25,
+   "calls_never_reading": 30,
+   "latency_s_p50": 2.27,
+   "latency_s_p95": 3.54,
+   "completion_tokens": 11475,
+   "max_prompt_tokens": 2386,
+   "dropped_parallel_calls": 0,
+   "raw": "results/raw/20261023T135605Z-lora-runbook-1240-7b-val.jsonl"
+  },
+  {
+   "condition": "lora-runbook-1240-7b",
+   "set": "test_unseen",
+   "model_file": "models/qwen2.5-7b-lora-runbook-1240-Q4_K_M.gguf",
+   "prompt": "base",
+   "tasks": 155,
+   "success": 130,
+   "rate": 0.839,
+   "ci95": [
+    0.773,
+    0.888
+   ],
+   "by_family": {
+    "incident": "39/55",
+    "request": "91/100"
+   },
+   "by_expected_outcome": {
+    "escalated": "17/25",
+    "need_information": "15/15",
+    "no_action_needed": "16/20",
+    "resolved": "82/95"
+   },
+   "failed_checks": {
+    "effects_allowed": 22,
+    "outcome": 15,
+    "unchanged": 12,
+    "healthy": 10,
+    "release": 5,
+    "config_values": 3
+   },
+   "stop_reasons": {
+    "finished": 155
+   },
+   "invalid_call_rate": 0.0,
+   "text_replies": 0,
+   "transport_errors": 0,
+   "tool_selection_ok": 0.839,
+   "episodes_with_unallowed_effects": 22,
+   "mean_steps": 3.25,
+   "calls_never_reading": 30,
+   "latency_s_p50": 2.52,
+   "latency_s_p95": 5.49,
+   "completion_tokens": 11470,
+   "max_prompt_tokens": 2425,
+   "dropped_parallel_calls": 0,
+   "raw": "results/raw/20261023T140214Z-lora-runbook-1240-7b-test_unseen.jsonl"
+  },
+  {
+   "condition": "lora-runbook-1240-s1-7b",
+   "set": "val",
+   "model_file": "models/qwen2.5-7b-lora-runbook-1240-s1-Q4_K_M.gguf",
+   "prompt": "base",
+   "tasks": 155,
+   "success": 138,
+   "rate": 0.89,
+   "ci95": [
+    0.831,
+    0.93
+   ],
+   "by_family": {
+    "incident": "46/55",
+    "request": "92/100"
+   },
+   "by_expected_outcome": {
+    "escalated": "16/25",
+    "need_information": "15/15",
+    "no_action_needed": "20/20",
+    "resolved": "87/95"
+   },
+   "failed_checks": {
+    "outcome": 16,
+    "effects_allowed": 10,
+    "unchanged": 9,
+    "replicas": 5,
+    "healthy": 3,
+    "release": 1
+   },
+   "stop_reasons": {
+    "finished": 155
+   },
+   "invalid_call_rate": 0.0,
+   "text_replies": 0,
+   "transport_errors": 0,
+   "tool_selection_ok": 0.89,
+   "episodes_with_unallowed_effects": 10,
+   "mean_steps": 3.3,
+   "calls_never_reading": 30,
+   "latency_s_p50": 0.96,
+   "latency_s_p95": 1.49,
+   "completion_tokens": 11576,
+   "max_prompt_tokens": 2386,
+   "dropped_parallel_calls": 0,
+   "raw": "results/raw/20261023T215832Z-lora-runbook-1240-s1-7b-val.jsonl"
+  },
+  {
+   "condition": "lora-runbook-1240-s1-7b",
+   "set": "test_unseen",
+   "model_file": "models/qwen2.5-7b-lora-runbook-1240-s1-Q4_K_M.gguf",
+   "prompt": "base",
+   "tasks": 155,
+   "success": 136,
+   "rate": 0.877,
+   "ci95": [
+    0.816,
+    0.92
+   ],
+   "by_family": {
+    "incident": "46/55",
+    "request": "90/100"
+   },
+   "by_expected_outcome": {
+    "escalated": "18/25",
+    "need_information": "15/15",
+    "no_action_needed": "18/20",
+    "resolved": "85/95"
+   },
+   "failed_checks": {
+    "outcome": 15,
+    "effects_allowed": 12,
+    "unchanged": 9,
+    "healthy": 5,
+    "replicas": 5,
+    "restarted": 1
+   },
+   "stop_reasons": {
+    "finished": 155
+   },
+   "invalid_call_rate": 0.0,
+   "text_replies": 0,
+   "transport_errors": 0,
+   "tool_selection_ok": 0.884,
+   "episodes_with_unallowed_effects": 12,
+   "mean_steps": 3.35,
+   "calls_never_reading": 30,
+   "latency_s_p50": 0.97,
+   "latency_s_p95": 1.42,
+   "completion_tokens": 11714,
+   "max_prompt_tokens": 2554,
+   "dropped_parallel_calls": 0,
+   "raw": "results/raw/20261023T220101Z-lora-runbook-1240-s1-7b-test_unseen.jsonl"
+  },
+  {
+   "condition": "lora-runbook-1240-s2-7b",
+   "set": "val",
+   "model_file": "models/qwen2.5-7b-lora-runbook-1240-s2-Q4_K_M.gguf",
+   "prompt": "base",
+   "tasks": 155,
+   "success": 152,
+   "rate": 0.981,
+   "ci95": [
+    0.945,
+    0.993
+   ],
+   "by_family": {
+    "incident": "52/55",
+    "request": "100/100"
+   },
+   "by_expected_outcome": {
+    "escalated": "24/25",
+    "need_information": "15/15",
+    "no_action_needed": "20/20",
+    "resolved": "93/95"
+   },
+   "failed_checks": {
+    "outcome": 2,
+    "healthy": 2,
+    "effects_allowed": 2,
+    "unchanged": 1,
+    "release": 1
+   },
+   "stop_reasons": {
+    "finished": 155
+   },
+   "invalid_call_rate": 0.0,
+   "text_replies": 0,
+   "transport_errors": 0,
+   "tool_selection_ok": 0.981,
+   "episodes_with_unallowed_effects": 2,
+   "mean_steps": 3.28,
+   "calls_never_reading": 30,
+   "latency_s_p50": 0.97,
+   "latency_s_p95": 1.5,
+   "completion_tokens": 11640,
+   "max_prompt_tokens": 2386,
+   "dropped_parallel_calls": 0,
+   "raw": "results/raw/20261024T022138Z-lora-runbook-1240-s2-7b-val.jsonl"
+  },
+  {
+   "condition": "lora-runbook-1240-s2-7b",
+   "set": "test_unseen",
+   "model_file": "models/qwen2.5-7b-lora-runbook-1240-s2-Q4_K_M.gguf",
+   "prompt": "base",
+   "tasks": 155,
+   "success": 145,
+   "rate": 0.935,
+   "ci95": [
+    0.885,
+    0.965
+   ],
+   "by_family": {
+    "incident": "51/55",
+    "request": "94/100"
+   },
+   "by_expected_outcome": {
+    "escalated": "21/25",
+    "need_information": "15/15",
+    "no_action_needed": "16/20",
+    "resolved": "93/95"
+   },
+   "failed_checks": {
+    "outcome": 10,
+    "effects_allowed": 8,
+    "unchanged": 8,
+    "restarted": 2,
+    "healthy": 1
+   },
+   "stop_reasons": {
+    "finished": 155
+   },
+   "invalid_call_rate": 0.0,
+   "text_replies": 0,
+   "transport_errors": 0,
+   "tool_selection_ok": 0.935,
+   "episodes_with_unallowed_effects": 8,
+   "mean_steps": 3.34,
+   "calls_never_reading": 30,
+   "latency_s_p50": 0.98,
+   "latency_s_p95": 1.44,
+   "completion_tokens": 11747,
+   "max_prompt_tokens": 2421,
+   "dropped_parallel_calls": 0,
+   "raw": "results/raw/20261024T022410Z-lora-runbook-1240-s2-7b-test_unseen.jsonl"
+  },
+  {
+   "condition": "improved-v2-14b",
+   "set": "test_unseen",
+   "model_file": "models/qwen2.5-14b-instruct-cf98f3b-Q4_K_M.gguf",
+   "prompt": "improved-v2",
+   "tasks": 155,
+   "success": 113,
+   "rate": 0.729,
+   "ci95": [
+    0.654,
+    0.793
+   ],
+   "by_family": {
+    "incident": "38/55",
+    "request": "75/100"
+   },
+   "by_expected_outcome": {
+    "escalated": "12/25",
+    "need_information": "8/15",
+    "no_action_needed": "12/20",
+    "resolved": "81/95"
+   },
+   "failed_checks": {
+    "outcome": 38,
+    "effects_allowed": 24,
+    "unchanged": 24,
+    "finished": 12,
+    "healthy": 3,
+    "restarted": 2,
+    "release": 1
+   },
+   "stop_reasons": {
+    "finished": 143,
+    "max_steps": 5,
+    "max_retries": 7
+   },
+   "invalid_call_rate": 0.111,
+   "text_replies": 76,
+   "transport_errors": 0,
+   "tool_selection_ok": 0.742,
+   "episodes_with_unallowed_effects": 24,
+   "mean_steps": 4.42,
+   "calls_never_reading": 53,
+   "latency_s_p50": 3.22,
+   "latency_s_p95": 12.86,
+   "completion_tokens": 29110,
+   "max_prompt_tokens": 4304,
+   "dropped_parallel_calls": 125,
+   "raw": "results/raw/20261009T131322Z-improved-v2-14b-test_unseen.jsonl"
+  }
+ ],
+ "pairs": {
+  "improved-v2-14b vs lora-runbook-1240-s1-7b": [
+   {
+    "set": "test_unseen",
+    "tasks": 155,
+    "improved-v2-14b": 113,
+    "lora-runbook-1240-s1-7b": 136,
+    "only_improved-v2-14b": 5,
+    "only_lora-runbook-1240-s1-7b": 28,
+    "p_mcnemar": 0.0001
+   }
+  ],
+  "improved-v2-14b vs lora-runbook-1240-s2-7b": [
+   {
+    "set": "test_unseen",
+    "tasks": 155,
+    "improved-v2-14b": 113,
+    "lora-runbook-1240-s2-7b": 145,
+    "only_improved-v2-14b": 3,
+    "only_lora-runbook-1240-s2-7b": 35,
+    "p_mcnemar": 0.0
+   }
+  ],
+  "lora-runbook-1240-7b vs lora-runbook-1240-s2-7b": [
+   {
+    "set": "test_unseen",
+    "tasks": 155,
+    "lora-runbook-1240-7b": 130,
+    "lora-runbook-1240-s2-7b": 145,
+    "only_lora-runbook-1240-7b": 3,
+    "only_lora-runbook-1240-s2-7b": 18,
+    "p_mcnemar": 0.0015
+   },
+   {
+    "set": "val",
+    "tasks": 155,
+    "lora-runbook-1240-7b": 135,
+    "lora-runbook-1240-s2-7b": 152,
+    "only_lora-runbook-1240-7b": 1,
+    "only_lora-runbook-1240-s2-7b": 18,
+    "p_mcnemar": 0.0001
+   }
+  ],
+  "lora-runbook-1240-7b vs lora-runbook-1240-s1-7b": [
+   {
+    "set": "test_unseen",
+    "tasks": 155,
+    "lora-runbook-1240-7b": 130,
+    "lora-runbook-1240-s1-7b": 136,
+    "only_lora-runbook-1240-7b": 7,
+    "only_lora-runbook-1240-s1-7b": 13,
+    "p_mcnemar": 0.2632
+   },
+   {
+    "set": "val",
+    "tasks": 155,
+    "lora-runbook-1240-7b": 135,
+    "lora-runbook-1240-s1-7b": 138,
+    "only_lora-runbook-1240-7b": 7,
+    "only_lora-runbook-1240-s1-7b": 10,
+    "p_mcnemar": 0.6291
+   }
+  ]
+ }
+}
